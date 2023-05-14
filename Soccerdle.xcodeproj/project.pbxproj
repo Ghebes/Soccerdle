@@ -8,17 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		491681732A102CDD00E091F3 /* SoccerdleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681722A102CDD00E091F3 /* SoccerdleApp.swift */; };
-		491681752A102CDD00E091F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681742A102CDD00E091F3 /* ContentView.swift */; };
 		491681772A102CDE00E091F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491681762A102CDE00E091F3 /* Assets.xcassets */; };
 		4916817A2A102CDE00E091F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491681792A102CDE00E091F3 /* Preview Assets.xcassets */; };
+		491681812A102D8B00E091F3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681802A102D8B00E091F3 /* HomeView.swift */; };
+		491681882A102F0E00E091F3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 491681852A102F0E00E091F3 /* OFL.txt */; };
+		4916818E2A10340B00E091F3 /* PTSansCaption-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 491681842A102F0E00E091F3 /* PTSansCaption-Bold.ttf */; };
+		4916818F2A10340E00E091F3 /* PTSansCaption-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 491681832A102F0E00E091F3 /* PTSansCaption-Regular.ttf */; };
+		491681912A10371A00E091F3 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681902A10371A00E091F3 /* CircleButton.swift */; };
+		491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681922A104BF000E091F3 /* SoccerdleView.swift */; };
+		491681992A104D9700E091F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681982A104D9700E091F3 /* Player.swift */; };
+		4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819A2A104F3D00E091F3 /* HeaderView.swift */; };
+		4916819D2A105CC400E091F3 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819C2A105CC400E091F3 /* FooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4916816F2A102CDD00E091F3 /* Soccerdle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soccerdle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491681722A102CDD00E091F3 /* SoccerdleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerdleApp.swift; sourceTree = "<group>"; };
-		491681742A102CDD00E091F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		491681762A102CDE00E091F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		491681792A102CDE00E091F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		491681802A102D8B00E091F3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		491681832A102F0E00E091F3 /* PTSansCaption-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansCaption-Regular.ttf"; sourceTree = "<group>"; };
+		491681842A102F0E00E091F3 /* PTSansCaption-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansCaption-Bold.ttf"; sourceTree = "<group>"; };
+		491681852A102F0E00E091F3 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		491681892A102F3900E091F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		491681902A10371A00E091F3 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		491681922A104BF000E091F3 /* SoccerdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerdleView.swift; sourceTree = "<group>"; };
+		491681982A104D9700E091F3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4916819A2A104F3D00E091F3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		4916819C2A105CC400E091F3 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +68,11 @@
 		491681712A102CDD00E091F3 /* Soccerdle */ = {
 			isa = PBXGroup;
 			children = (
-				491681722A102CDD00E091F3 /* SoccerdleApp.swift */,
-				491681742A102CDD00E091F3 /* ContentView.swift */,
+				491681892A102F3900E091F3 /* Info.plist */,
+				491681972A104D7F00E091F3 /* Data */,
+				491681962A104C0A00E091F3 /* Soccerdle */,
+				491681942A104BFC00E091F3 /* Home and Utils */,
+				491681952A104C0400E091F3 /* Setup */,
 				491681762A102CDE00E091F3 /* Assets.xcassets */,
 				491681782A102CDE00E091F3 /* Preview Content */,
 			);
@@ -65,6 +85,52 @@
 				491681792A102CDE00E091F3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		491681822A102EFB00E091F3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				491681852A102F0E00E091F3 /* OFL.txt */,
+				491681842A102F0E00E091F3 /* PTSansCaption-Bold.ttf */,
+				491681832A102F0E00E091F3 /* PTSansCaption-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		491681942A104BFC00E091F3 /* Home and Utils */ = {
+			isa = PBXGroup;
+			children = (
+				491681802A102D8B00E091F3 /* HomeView.swift */,
+				491681902A10371A00E091F3 /* CircleButton.swift */,
+				4916819A2A104F3D00E091F3 /* HeaderView.swift */,
+				4916819C2A105CC400E091F3 /* FooterView.swift */,
+			);
+			path = "Home and Utils";
+			sourceTree = "<group>";
+		};
+		491681952A104C0400E091F3 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				491681822A102EFB00E091F3 /* Fonts */,
+				491681722A102CDD00E091F3 /* SoccerdleApp.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		491681962A104C0A00E091F3 /* Soccerdle */ = {
+			isa = PBXGroup;
+			children = (
+				491681922A104BF000E091F3 /* SoccerdleView.swift */,
+			);
+			path = Soccerdle;
+			sourceTree = "<group>";
+		};
+		491681972A104D7F00E091F3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				491681982A104D9700E091F3 /* Player.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +191,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4916818E2A10340B00E091F3 /* PTSansCaption-Bold.ttf in Resources */,
+				491681882A102F0E00E091F3 /* OFL.txt in Resources */,
 				4916817A2A102CDE00E091F3 /* Preview Assets.xcassets in Resources */,
 				491681772A102CDE00E091F3 /* Assets.xcassets in Resources */,
+				4916818F2A10340E00E091F3 /* PTSansCaption-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +206,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491681752A102CDD00E091F3 /* ContentView.swift in Sources */,
+				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
+				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
+				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
+				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
+				491681812A102D8B00E091F3 /* HomeView.swift in Sources */,
+				491681992A104D9700E091F3 /* Player.swift in Sources */,
 				491681732A102CDD00E091F3 /* SoccerdleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +344,7 @@
 				DEVELOPMENT_TEAM = 99G82434DT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Soccerdle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +374,7 @@
 				DEVELOPMENT_TEAM = 99G82434DT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Soccerdle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

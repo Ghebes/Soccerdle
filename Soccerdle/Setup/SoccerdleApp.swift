@@ -11,7 +11,7 @@ import SwiftUI
 struct SoccerdleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
