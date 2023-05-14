@@ -8,24 +8,23 @@
 import Foundation
 import SwiftUI
 
-struct Player{
+struct Player: Hashable{
     let name: String
-    let generalPosition: String
-    let specificPosition: String
+    let generalPosition: GeneralPosition
+    let specificPosition: SpecificPosition
     let club: String
-    let league: String
+    let league: League
     let nation: String
-    let age: String
+    let age: Int
     
     var playerImage: Image {
         return Image(name)
     }
-    
-    var leagueImage: Image{
-        return Image(league)
-    }
-    
-    var clubImage: Image {
-        return Image(club)
-    }
+   
 }
+
+
+
+var players: [Player] = [
+    Player(name: "Lionel Messi", generalPosition: GeneralPosition.att, specificPosition: SpecificPosition.rw, club: "PSG", league: League.ligue1, nation: "Argentina", age: 35)
+]

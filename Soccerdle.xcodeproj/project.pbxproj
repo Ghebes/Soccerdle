@@ -19,6 +19,9 @@
 		491681992A104D9700E091F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681982A104D9700E091F3 /* Player.swift */; };
 		4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819A2A104F3D00E091F3 /* HeaderView.swift */; };
 		4916819D2A105CC400E091F3 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819C2A105CC400E091F3 /* FooterView.swift */; };
+		499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A52A1169980036AAE9 /* PlayerSoccerdleView.swift */; };
+		499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A72A116C8E0036AAE9 /* TraitView.swift */; };
+		499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A92A116CCD0036AAE9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		491681982A104D9700E091F3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4916819A2A104F3D00E091F3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4916819C2A105CC400E091F3 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		499942A52A1169980036AAE9 /* PlayerSoccerdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSoccerdleView.swift; sourceTree = "<group>"; };
+		499942A72A116C8E0036AAE9 /* TraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitView.swift; sourceTree = "<group>"; };
+		499942A92A116CCD0036AAE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 		491681942A104BFC00E091F3 /* Home and Utils */ = {
 			isa = PBXGroup;
 			children = (
+				499942A92A116CCD0036AAE9 /* Constants.swift */,
 				491681802A102D8B00E091F3 /* HomeView.swift */,
 				491681902A10371A00E091F3 /* CircleButton.swift */,
 				4916819A2A104F3D00E091F3 /* HeaderView.swift */,
@@ -121,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				491681922A104BF000E091F3 /* SoccerdleView.swift */,
+				499942A52A1169980036AAE9 /* PlayerSoccerdleView.swift */,
+				499942A72A116C8E0036AAE9 /* TraitView.swift */,
 			);
 			path = Soccerdle;
 			sourceTree = "<group>";
@@ -206,9 +215,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */,
+				499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */,
 				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
 				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
 				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
+				499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */,
 				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
 				491681812A102D8B00E091F3 /* HomeView.swift in Sources */,
 				491681992A104D9700E091F3 /* Player.swift in Sources */,

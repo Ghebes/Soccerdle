@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SoccerdleApp: App {
+    @AppStorage("coins", store: .standard) var coins: Int = 100
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+            
         }
     }
 }

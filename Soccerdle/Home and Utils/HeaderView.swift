@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @State var coinsAmount: Int = 100
+    @AppStorage("coins") var coinsAmount: Int = 100
     @Environment(\.dismiss) var dismiss
+    
     @State var title = "Soccerdle"
     var body: some View {
         
@@ -26,7 +27,7 @@ struct HeaderView: View {
             
             Text(title)
                 .foregroundColor(.white)
-                .font(.custom("PT Sans Caption Bold", size: 36))
+                .font(.custom("PT Sans Caption Bold", size: 30))
                 .padding(.leading, 38)
             
             

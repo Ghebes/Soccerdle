@@ -11,6 +11,9 @@ struct FooterView: View {
     @State var hintAlert: Bool = false
     @State var revealAnswerAlert: Bool = false
     @State var letter: Bool = false
+    
+    @Binding var showInstructions: Bool
+    
     var body: some View {
         HStack{
             
@@ -27,6 +30,7 @@ struct FooterView: View {
                 .background(Color("questionMark"))
                 .cornerRadius(50)
                 .foregroundColor(.black)
+                .blur(radius: showInstructions ? 2 : 0)
                 
             }
             .alert("Hint", isPresented: $hintAlert, actions: {
@@ -61,6 +65,7 @@ struct FooterView: View {
                 .cornerRadius(50)
                 .foregroundColor(.black)
                 .padding(.leading, 33)
+                .blur(radius: showInstructions ? 2 : 0)
                 
             }
             .alert("Hint", isPresented: $hintAlert, actions: {
@@ -87,6 +92,13 @@ struct FooterView: View {
                 .resizable()
                 .foregroundColor(.white)
                 .frame(width: 15, height: 30)
+                .onTapGesture {
+                    withAnimation(.easeIn(duration: 1)){
+                        showInstructions = true
+                    }
+                    
+                }
+                
             
             
         }
@@ -96,6 +108,6 @@ struct FooterView: View {
 
 struct FooterView_Previews: PreviewProvider {
     static var previews: some View {
-        FooterView()
+        FooterView(showInstructions: Binding<Bool>.constant(false))
     }
 }
