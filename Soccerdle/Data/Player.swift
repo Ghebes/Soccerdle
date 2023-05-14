@@ -9,16 +9,22 @@ import Foundation
 import SwiftUI
 
 struct Player: Hashable{
-    let name: String
+    let firstName: String
+    let lastName: String
     let generalPosition: GeneralPosition
     let specificPosition: SpecificPosition
     let club: String
     let league: League
     let nation: String
     let age: Int
+
     
     var playerImage: Image {
         return Image(name)
+    }
+    
+    var name: String {
+        return firstName + " " + lastName
     }
    
 }
@@ -26,5 +32,5 @@ struct Player: Hashable{
 
 
 var players: [Player] = [
-    Player(name: "Lionel Messi", generalPosition: GeneralPosition.att, specificPosition: SpecificPosition.rw, club: "PSG", league: League.ligue1, nation: "Argentina", age: 35)
+    Player(firstName: "Lionel", lastName: "Messi", generalPosition: GeneralPosition.att, specificPosition: SpecificPosition.rw, club: "PSG", league: League.ligue1, nation: "Argentina", age: 35)
 ]

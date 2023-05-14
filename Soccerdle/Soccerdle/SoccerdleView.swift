@@ -10,16 +10,20 @@ import SwiftUI
 struct SoccerdleView: View {
     @State var searchQuery = ""
     @State var searching: Bool = false
-    
+    @State var guesses = 0
     @State var showInstructions: Bool = false
-    var guessedPlayers = players
+    var guessedPlayers: [Player] = []
+    
+    var searchingPlayers: [Player] {
+        let searched = players.filter({$0.name.contains(searchQuery)})
+        print(searched)
+        return searched
+    }
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack{
-                    
-                    
                     HeaderView()
                         .frame(alignment: .top)
                     
@@ -63,10 +67,29 @@ struct SoccerdleView: View {
                     .onTapGesture {
                         searching = false
                     }
+                    .opacity(searching ? 0.3 : 1)
                     
                     FooterView(showInstructions: $showInstructions)
                 }
                 .background(Color("background"))
+                
+                
+                
+                //z index for the people being searched for
+                //limit number of people to 5 on screen
+                VStack{
+                    ForEach(searchingPlayers, id: \.self) { player in
+                        SearchingPlayerView(player: player)
+                            .onTapGesture {
+                                
+                            }
+
+                    }
+                }
+                .frame(height: 500, alignment: .top)
+                
+                
+                
                 
                 VStack{
                     HStack{
