@@ -93,7 +93,7 @@ struct FooterView: View {
                 .foregroundColor(.white)
                 .frame(width: 15, height: 30)
                 .onTapGesture {
-                    withAnimation(.easeIn(duration: 1)){
+                    withAnimation(.spring()){
                         showInstructions = true
                     }
                     

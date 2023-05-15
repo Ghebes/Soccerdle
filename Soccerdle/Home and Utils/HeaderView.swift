@@ -9,14 +9,15 @@ import SwiftUI
 
 struct HeaderView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
-    @Environment(\.dismiss) var dismiss
+    var action : DismissAction
     
     @State var title = "Soccerdle"
     var body: some View {
         
         HStack{
             Button{
-                dismiss()
+                action()
+                print("Pressed")
             }label: {
                 Image("arrow")
                     .resizable()
@@ -35,10 +36,12 @@ struct HeaderView: View {
             Text(String(coinsAmount))
                 .foregroundColor(.white)
                 .font(.custom("PT Sans Caption", size: 20))
+                
             
             Image("coins")
                 .resizable()
                 .frame(width: 30, height: 30, alignment: .trailing)
+                .foregroundColor(.white)
                 
             
         }
@@ -46,8 +49,4 @@ struct HeaderView: View {
     }
 }
 
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView()
-    }
-}
+

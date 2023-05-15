@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var coinsAmount: Int = 100
+    @AppStorage("coins") var coinsAmount: Int = 100
     var body: some View {
         NavigationView{
             VStack(spacing: 10.0){
@@ -23,6 +23,7 @@ struct HomeView: View {
                     Image("coins")
                         .resizable()
                         .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
                 }
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: -10, trailing: 20))
                 

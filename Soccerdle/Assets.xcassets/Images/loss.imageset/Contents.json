@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "coins.png",
+      "filename" : "loss.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "coins@2x.png",
+      "filename" : "loss@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "coins@3x.png",
+      "filename" : "loss@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,8 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

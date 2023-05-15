@@ -54,7 +54,7 @@ struct SearchingPlayerView: View {
                     Spacer()
                     Image(player.league.rawValue)
                         .resizable()
-                        .frame(width: 32, height: 55)
+                        .frame(width: 38, height: 45)
                     Spacer()
                     Image(player.club)
                         .resizable()

@@ -53,3 +53,5 @@ enum GeneralPosition: String {
     case att = "ATT"
     case mid = "MID"
 }
+
+

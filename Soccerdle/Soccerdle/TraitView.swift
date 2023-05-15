@@ -10,8 +10,8 @@ import SwiftUI
 struct TraitView: View {
     
     @State var correct: Bool = true
-    @State var attribute: Constants = Constants.nation
-    @State var input: Any = "Argentina"
+    @State var attribute: Constants = Constants.league
+    @State var input: Any = "Ligue 1"
     
     var imageNeeded: Bool {
         switch(attribute){
