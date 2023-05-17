@@ -48,7 +48,7 @@ struct SearchingPlayerView: View {
                 
                 Spacer()
                 HStack{
-                    Image(player.nation)
+                    Image(player.nation.rawValue)
                         .resizable()
                         .frame(width: 40, height: 30)
                     Spacer()
@@ -56,7 +56,7 @@ struct SearchingPlayerView: View {
                         .resizable()
                         .frame(width: 38, height: 45)
                     Spacer()
-                    Image(player.club)
+                    Image(player.club.rawValue)
                         .resizable()
                         .frame(width: 40, height: 40)
                     Spacer()

@@ -20,10 +20,13 @@ struct TraitView: View {
         case .generalPosition:
             return false
         case .nation:
+
             return true
         case .league:
+
             return true
         case .club:
+
             return true
         case .age:
             return false
@@ -33,7 +36,7 @@ struct TraitView: View {
     var body: some View {
         VStack{
             if(imageNeeded){
-                Image(input as! String)
+                Image(input.rawValue)
                     .resizable()
                     .frame(
                         width: attribute == Constants.club ? 40 : attribute == Constants.nation ? 40 : 30, height: attribute == Constants.club ? 40 : attribute == Constants.nation ? 30: 35)
