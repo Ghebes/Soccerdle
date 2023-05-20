@@ -17,6 +17,7 @@ struct ResultsView: View {
     var playAgain: () -> Void
     var quit: () -> Void
     
+    
     var body: some View {
         VStack(spacing: 0.0){
             HStack{
@@ -48,6 +49,9 @@ struct ResultsView: View {
                         .font(.custom("American TypeWriter", size: 34))
                         .bold()
                         .foregroundColor(Color("correct"))
+                        .onTapGesture {
+                            print(amountCoins)
+                        }
                     
                     Image("coins")
                         .resizable()

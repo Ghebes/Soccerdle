@@ -9,22 +9,28 @@ import SwiftUI
 
 struct SoccerdleView: View {
     @AppStorage("coins") var coinsAmount = 0
+    @FocusState private var searchingFocused: Bool
     
     @State var searchQuery = ""
     @State var searching: Bool = false
     @State var guesses = 0
     @State var showInstructions: Bool = false
-    
-    @State var answer: Player = players[0]
+    @State var coins: Int = 7
+    @State var answer: Player = players.randomElement()!
     @State var won: Bool = false
+    @State var hintScreen: Bool = false
+    @State var hintText: String = "Blank Text"
+    @State var poorAlert: Bool = false
+    
+    @State var revealScreen: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
     @State var guessedPlayers: [Player] = []
     
     var searchingPlayers: [Player] {
-        
-        let searched = players.filter({$0.name.contains(searchQuery)})
+        print(searchQuery)
+        let searched = players.filter({$0.name.lowercased().contains(searchQuery.lowercased())})
         return searched
     }
     
@@ -51,11 +57,16 @@ struct SoccerdleView: View {
                     }
                     .frame(width: 370, height: 33)
                     .background(.white)
+                    .focused($searchingFocused)
+                    .disabled(won || guesses == 7 || showInstructions || hintScreen || hintText != "Blank Text" ? true : false)
                     .cornerRadius(10)
                     .padding(.top, 30)
                     .onTapGesture {
-                        searching = true
-                        
+                        if(!won || guesses != 7 || !showInstructions || hintScreen || hintText != "Blank Text"){
+                            searching = true
+                            searchingFocused = true
+                        }
+                       
                     }
                     .shadow(radius: searching ? 4 : 0)
                     
@@ -76,33 +87,39 @@ struct SoccerdleView: View {
                                 
                             }
                         }
-                        
-                        
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .padding(.top, 13)
-                    .blur(radius: searching || showInstructions ? 2 : 0)
+                    .blur(radius: searching || showInstructions || won || hintScreen || guesses == 7 || hintText != "Blank Text" ? 2 : 0)
                     .onTapGesture {
                         searching = false
+                        searchingFocused = false
+                        withAnimation(.easeOut(duration: 0.5)){
+                            hintText = "Blank Text"
+                        }
+                        
                     }
                     .opacity(searching ? 0.3 : 1)
                     
-                    FooterView(showInstructions: $showInstructions)
+                    FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealScreen, showInstructions: $showInstructions)
+                        .disabled(won || guesses == 7 || showInstructions || hintScreen || hintText != "Blank Text" ? true : false)
                 }
                 .background(Color("background"))
                 
                 
                 
-                //z index for the people being searched for
-                //limit number of people to 5 on screen
+
+                //prefix limits number of players
                 VStack{
-                    ForEach(searchingPlayers, id: \.self) { player in
+                    ForEach(searchingPlayers.prefix(5), id: \.self) { player in
                         SearchingPlayerView(player: player)
                             .onTapGesture {
                                 searchQuery = ""
                                 withAnimation(.easeIn(duration: 1)){
                                     guessedPlayers.append(player)
+                                    guesses += 1
                                     searching = false
+                                    searchingFocused = false
                                 }
                                 
                             }
@@ -114,19 +131,27 @@ struct SoccerdleView: View {
                 
                 
                 
+                
                 //Win Screen
                 winScreen
+                
+                //Loss Screen
+                lossScreen
                 
                 //Instructions
                 instructions
                 
+                hintAlert
                 
+                hint
                 
+                poor
                 
-                
+                revealAnswer
             }
         }
         .navigationBarBackButtonHidden()
+        
         
         
     }
@@ -134,10 +159,15 @@ struct SoccerdleView: View {
     func playAgain() {
         withAnimation(.spring()){
             won = false
+            guesses = 0
             guessedPlayers = []
             
             //TODO: new random player
-            
+            guard let random = players.randomElement() else {
+                print("Error")
+                return
+            }
+            answer = random
         }
     }
     
@@ -146,17 +176,263 @@ struct SoccerdleView: View {
     }
     
     func coinsWon() -> Int {
-        return 8 - guessedPlayers.count
+        coins = 8 - guessedPlayers.count
+        return coins
     }
     
     private var winScreen: some View{
-       ResultsView(won: true, text: "", amountCoins: coinsWon(), playAgain: playAgain, quit: quit)
-            .opacity(won ? 1 : 0)
-            .shadow(radius: won ? 0 : 3)
+        Group{
+            if(won){
+                ResultsView(won: true, text: "", amountCoins: coins, guesses: guesses, name: answer.name, playAgain: playAgain, quit: quit)
+                     .shadow(radius: 3)
+            }
+        }
+    }
+    
+    private var lossScreen: some View{
+        Group{
+            if(guesses == 7){
+                ResultsView(won: false, text: "", amountCoins: 0, guesses: guesses, fromWorlde: true, name: answer.name, playAgain: playAgain, quit: quit)
+                    .shadow(radius: 3)
+            }
+        }
+    }
+    
+    
+    private func whichHintToShow() -> String{
+        var specificPostion = false, generalPostion = false, age = false, nation = false , club = false, league = false
+        
+        
+        for player in guessedPlayers {
+            if(player.specificPosition == answer.specificPosition){
+                specificPostion = true
+            }
+            if(player.generalPosition == answer.generalPosition){
+                generalPostion = true
+            }
+            if(player.nation == answer.nation){
+                nation = true
+            }
+            if(player.club == answer.club){
+                club = true
+            }
+            if(player.league == answer.league){
+                league = true
+            }
+            if(player.age == answer.age){
+                age = true
+            }
+
+        }
+
+        //return first that is false
+        if(specificPostion == false){
+            return "specificPosition"
+        }else if(generalPostion == false){
+            return "generalPosition"
+        }else if(nation == false){
+            return "nation"
+        }else if(league == false){
+            return "league"
+        }else if(club == false){
+            return "club"
+        }else if(age == false){
+            return "age"
+        }else{
+            return "none"
+        }
+    }
+    
+    private var hint: some View {
+        
+        VStack{
+            Text("Your Hint is...")
+                .font(.custom("PT Sans Caption Bold", size: 24))
             
+            
+            Text(hintText)
+                .font(.custom("PT Sans Caption", size: 20))
+        }
+        .frame(width: 250, height: 200)
+        .background(.white)
+        .cornerRadius(20)
+        .opacity(hintText != "Blank Text" ? 1 : 0)
+    }
+    
+    private var poor: some View {
+        VStack{
+            Text("You don't have enough coins to purchase this")
+                .frame(width: 250, height: 100, alignment: .center)
+                .background(.white)
+                .multilineTextAlignment(.center)
+                .cornerRadius(20)
+                .font(.custom("PT Sans Caption", size: 24))
+                
+            
+            Button(role: .cancel, action: {
+                withAnimation(.easeOut(duration: 0.5)){
+                    poorAlert = false
+                    revealScreen = false
+                }
+            }, label:{
+                Text("Ok")
+            })
+        }
+        .opacity(poorAlert ? 1 : 0)
         
-        
-        
+            
+    }
+    
+    private var revealAnswer: some View{
+        Group{
+            VStack{
+                Text("Reveal Answer")
+                    .font(.custom("PT Sans Caption Bold", size: 28))
+                    .padding(.top, 20)
+                
+                Text("Would you like to reveal the answer for 75 coins?")
+                    .padding([.top, .horizontal], 15)
+                    .font(.custom("PT Sans Caption", size: 24))
+                    .multilineTextAlignment(.center)
+                Spacer()
+                
+                HStack(spacing: 2){
+                    Button{
+                        if(coinsAmount >= 75){
+                            withAnimation(.spring()){
+                                guessedPlayers.append(answer)
+                                guesses += 1
+                            }
+                            withAnimation(.easeOut(duration: 2).delay(0.5)){
+                                revealScreen = false
+                                
+                            }
+                            
+                            coinsAmount -= 75
+                        }else{
+                            withAnimation(.easeOut(duration: 1)){
+                                revealScreen = false
+                                poorAlert = true
+                            }
+                        }
+  
+                    }label: {
+                        Text("Yes")
+                            .frame(width: 97, height: 62)
+                            .background(Color("correct"))
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                            .font(.custom("PT Sans Caption", size: 20))
+                    }
+                    
+                    Button{
+                        withAnimation(.easeOut(duration: 1)){
+                            revealScreen = false
+                        }
+                    }label: {
+                        Text("No")
+                            .frame(width: 97, height: 62)
+                            .background(Color("wrong"))
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                            .font(.custom("PT Sans Caption", size: 20))
+                    }
+                }
+                Spacer()
+            }
+            .background(.white)
+            .cornerRadius(20)
+            .frame(width: 230, height: 330)
+            .opacity(revealScreen ? 1 : 0)
+        }
+    }
+    
+    private var hintAlert: some View {
+        Group{
+                VStack{
+                    Text("Hint")
+                        .font(.custom("PT Sans Caption Bold", size: 36))
+                        .padding(.top, 20)
+                    
+                    Text("Would you like to purchase a hint for 50 coins?")
+                        .padding([.top, .horizontal], 15)
+                        .font(.custom("PT Sans Caption", size: 24))
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                    
+                    HStack(spacing: 2){
+                        Button{
+                            withAnimation(.easeOut(duration: 1)){
+                                hintScreen = false
+                            }
+                            
+                            
+                            
+                            
+                            if(coinsAmount > 50){
+                                withAnimation(.spring()){
+                                    coinsAmount -= 50
+                                }
+                                //show the hint
+                                let whichHint = whichHintToShow()
+                                print(whichHint)
+                                //specific alert for hints
+                                switch (whichHint){
+                                case "specificPosition":
+                                    hintText = "Your player plays " + answer.specificPosition.rawValue
+                                case "generalPosition":
+                                    hintText = "Your player plays " + answer.generalPosition.rawValue
+                                case "nation":
+                                    hintText = "Your player plays for " + answer.nation.rawValue
+                                case "league":
+                                    hintText = "Your player plays in " + answer.league.rawValue
+                                case "club":
+                                    hintText = "Your player plays for " + answer.club.rawValue
+                                case "age":
+                                    hintText = "Your player is " + String(answer.age) + " yrs old."
+                                default:
+                                    hintText = "Not working"
+                                }
+                            }else{
+                                withAnimation(.easeOut(duration: 1)){
+                                    hintScreen = false
+                                    poorAlert = true
+                                }
+                            }
+                            
+                            
+                            
+                        }label: {
+                            Text("Yes")
+                                .frame(width: 97, height: 62)
+                                .background(Color("correct"))
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                                .font(.custom("PT Sans Caption", size: 20))
+                        }
+                        
+                        Button{
+                            withAnimation(.easeOut(duration: 1)){
+                                hintScreen = false
+                            }
+                        }label: {
+                            Text("No")
+                                .frame(width: 97, height: 62)
+                                .background(Color("wrong"))
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                                .font(.custom("PT Sans Caption", size: 20))
+                        }
+                    }
+                    Spacer()
+                }
+                .background(.white)
+                .cornerRadius(20)
+                .frame(width: 230, height: 330)
+                .opacity(hintScreen ? 1 : 0)
+                
+                
+            }
     }
     
     ///View showing how to play Soccerdle

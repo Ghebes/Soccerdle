@@ -21,13 +21,13 @@ struct PlayerSoccerdleView: View {
             
             TraitView(correct: player.generalPosition == answer.generalPosition ? true : false , attribute: .generalPosition, input: player.generalPosition.rawValue)
             
-            TraitView(correct: player.club == answer.club ? true : false, attribute: .club, input: player.club)
+            TraitView(correct: player.club == answer.club ? true : false, attribute: .club, input: player.club.rawValue)
             
             TraitView(correct: player.league == answer.league ? true : false, attribute: .league, input: player.league.rawValue)
             
-            TraitView(correct: player.nation == answer.nation ? true : false, attribute: .nation, input: "Argentina")
+            TraitView(correct: player.nation == answer.nation ? true : false, attribute: .nation, input: player.nation.rawValue)
             
-            TraitView(correct: player.age == answer.age ? true : false, attribute: .age, input: player.age)
+            TraitView(correct: player.age == answer.age ? true : false, attribute: .age, input: String(player.age))
         }
         .frame(width: 380, height: 70, alignment: .leading)
         .background(.white)

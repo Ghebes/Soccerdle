@@ -42,7 +42,7 @@ enum Club: String {
     //La Liga
     case barcelona = "Barcelona"
     case realMadrid = "Real Madrid"
-    case althetico = "Althetico Madrid"
+    case althetico = "Athletico Madrid"
     case realSociedad = "Real Sociedad"
     case villareal = "Villareal"
     case realBetis = "Real Betis"

@@ -11,7 +11,7 @@ struct TraitView: View {
     
     @State var correct: Bool = true
     @State var attribute: Constants = Constants.league
-    @State var input: Any = "Ligue 1"
+    @State var input: String = League.ligue1.rawValue
     
     var imageNeeded: Bool {
         switch(attribute){
@@ -36,13 +36,13 @@ struct TraitView: View {
     var body: some View {
         VStack{
             if(imageNeeded){
-                Image(input.rawValue)
+                Image(input)
                     .resizable()
                     .frame(
                         width: attribute == Constants.club ? 40 : attribute == Constants.nation ? 40 : 30, height: attribute == Constants.club ? 40 : attribute == Constants.nation ? 30: 35)
             }else{
                 
-                Text(attribute == Constants.age ? String(input as! Int) : input as! String)
+                Text(input)
                     .font(Font.custom("PT Sans Caption", size: 20))
             }
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchingPlayerView: View {
-    @State var player: Player = players[0]
+    @State var player: Player = players[3]
     
     var generalColor: Color {
         switch (player.generalPosition.rawValue){
