@@ -19,11 +19,18 @@
 		491681992A104D9700E091F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681982A104D9700E091F3 /* Player.swift */; };
 		4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819A2A104F3D00E091F3 /* HeaderView.swift */; };
 		4916819D2A105CC400E091F3 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819C2A105CC400E091F3 /* FooterView.swift */; };
+		4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */; };
+		4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C02A41032D004A7164 /* GuessWhoView.swift */; };
+		4965E1C32A410343004A7164 /* GuessLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C22A410343004A7164 /* GuessLevelsView.swift */; };
+		4965E1C52A410603004A7164 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C42A410603004A7164 /* Levels.swift */; };
+		4965E1C82A41101A004A7164 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C72A41101A004A7164 /* LevelView.swift */; };
 		499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A52A1169980036AAE9 /* PlayerSoccerdleView.swift */; };
 		499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A72A116C8E0036AAE9 /* TraitView.swift */; };
 		499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A92A116CCD0036AAE9 /* Constants.swift */; };
 		499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */; };
+		49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E81C1C2A44F54700F706D6 /* Timers.swift */; };
 		49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EED1A92A12A45D003D829D /* ResultsView.swift */; };
+		49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F265472A42104900F29E07 /* DisappearingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +48,18 @@
 		491681982A104D9700E091F3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4916819A2A104F3D00E091F3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4916819C2A105CC400E091F3 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDisplayView.swift; sourceTree = "<group>"; };
+		4965E1C02A41032D004A7164 /* GuessWhoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessWhoView.swift; sourceTree = "<group>"; };
+		4965E1C22A410343004A7164 /* GuessLevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessLevelsView.swift; sourceTree = "<group>"; };
+		4965E1C42A410603004A7164 /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		4965E1C72A41101A004A7164 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		499942A52A1169980036AAE9 /* PlayerSoccerdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSoccerdleView.swift; sourceTree = "<group>"; };
 		499942A72A116C8E0036AAE9 /* TraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitView.swift; sourceTree = "<group>"; };
 		499942A92A116CCD0036AAE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingPlayerView.swift; sourceTree = "<group>"; };
+		49E81C1C2A44F54700F706D6 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		49EED1A92A12A45D003D829D /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		49F265472A42104900F29E07 /* DisappearingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,8 @@
 		491681712A102CDD00E091F3 /* Soccerdle */ = {
 			isa = PBXGroup;
 			children = (
+				4965E1BF2A41031B004A7164 /* Guess Who */,
+				4965E1B82A40CBD9004A7164 /* Knowledge */,
 				491681892A102F3900E091F3 /* Info.plist */,
 				491681972A104D7F00E091F3 /* Data */,
 				491681962A104C0A00E091F3 /* Soccerdle */,
@@ -146,6 +162,27 @@
 				491681982A104D9700E091F3 /* Player.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		4965E1B82A40CBD9004A7164 /* Knowledge */ = {
+			isa = PBXGroup;
+			children = (
+				4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */,
+				49E81C1C2A44F54700F706D6 /* Timers.swift */,
+			);
+			path = Knowledge;
+			sourceTree = "<group>";
+		};
+		4965E1BF2A41031B004A7164 /* Guess Who */ = {
+			isa = PBXGroup;
+			children = (
+				4965E1C02A41032D004A7164 /* GuessWhoView.swift */,
+				4965E1C22A410343004A7164 /* GuessLevelsView.swift */,
+				4965E1C42A410603004A7164 /* Levels.swift */,
+				4965E1C72A41101A004A7164 /* LevelView.swift */,
+				49F265472A42104900F29E07 /* DisappearingImageView.swift */,
+			);
+			path = "Guess Who";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,12 +262,19 @@
 				49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */,
 				499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */,
 				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
+				4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */,
 				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
 				499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */,
 				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
 				499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */,
 				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
 				491681812A102D8B00E091F3 /* HomeView.swift in Sources */,
+				4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */,
+				4965E1C82A41101A004A7164 /* LevelView.swift in Sources */,
+				4965E1C52A410603004A7164 /* Levels.swift in Sources */,
+				4965E1C32A410343004A7164 /* GuessLevelsView.swift in Sources */,
+				49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */,
+				49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */,
 				491681992A104D9700E091F3 /* Player.swift in Sources */,
 				491681732A102CDD00E091F3 /* SoccerdleApp.swift in Sources */,
 			);

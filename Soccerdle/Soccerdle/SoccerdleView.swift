@@ -19,8 +19,12 @@ struct SoccerdleView: View {
     @State var answer: Player = players.randomElement()!
     @State var won: Bool = false
     @State var hintScreen: Bool = false
-    @State var hintText: String = "Blank Text"
+    @State var hintText: String = ""
     @State var poorAlert: Bool = false
+    
+    var showHint: Bool {
+        return hintText != ""
+    }
     
     @State var revealScreen: Bool = false
     
@@ -58,11 +62,11 @@ struct SoccerdleView: View {
                     .frame(width: 370, height: 33)
                     .background(.white)
                     .focused($searchingFocused)
-                    .disabled(won || guesses == 7 || showInstructions || hintScreen || hintText != "Blank Text" ? true : false)
+                    .disabled(won || guesses == 7 || showInstructions || hintScreen || showHint ? true : false)
                     .cornerRadius(10)
                     .padding(.top, 30)
                     .onTapGesture {
-                        if(!won || guesses != 7 || !showInstructions || hintScreen || hintText != "Blank Text"){
+                        if(!won || guesses != 7 || !showInstructions || hintScreen || showHint){
                             searching = true
                             searchingFocused = true
                         }
@@ -90,19 +94,19 @@ struct SoccerdleView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .padding(.top, 13)
-                    .blur(radius: searching || showInstructions || won || hintScreen || guesses == 7 || hintText != "Blank Text" ? 2 : 0)
+                    .blur(radius: searching || showInstructions || won || hintScreen || guesses == 7 || showHint ? 2 : 0)
                     .onTapGesture {
                         searching = false
                         searchingFocused = false
                         withAnimation(.easeOut(duration: 0.5)){
-                            hintText = "Blank Text"
+                            hintText = ""
                         }
                         
                     }
                     .opacity(searching ? 0.3 : 1)
                     
                     FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealScreen, showInstructions: $showInstructions)
-                        .disabled(won || guesses == 7 || showInstructions || hintScreen || hintText != "Blank Text" ? true : false)
+                        .disabled(won || guesses == 7 || showInstructions || hintScreen || showHint ? true : false)
                 }
                 .background(Color("background"))
                 
@@ -111,7 +115,7 @@ struct SoccerdleView: View {
 
                 //prefix limits number of players
                 VStack{
-                    ForEach(searchingPlayers.prefix(5), id: \.self) { player in
+                    ForEach(searchingPlayers.prefix(3), id: \.self) { player in
                         SearchingPlayerView(player: player)
                             .onTapGesture {
                                 searchQuery = ""
@@ -127,16 +131,16 @@ struct SoccerdleView: View {
                     }
                 }
                 .opacity(searching ? 1 : 0)
-                .frame(height: 500, alignment: .top)
+                .frame(height: 500, alignment: .center)
+                .padding(.top, 50)
                 
-                
-                
-                
+
                 //Win Screen
                 winScreen
                 
                 //Loss Screen
                 lossScreen
+                
                 
                 //Instructions
                 instructions
@@ -252,23 +256,21 @@ struct SoccerdleView: View {
             
             Text(hintText)
                 .font(.custom("PT Sans Caption", size: 20))
+                .multilineTextAlignment(.center)
         }
         .frame(width: 250, height: 200)
         .background(.white)
         .cornerRadius(20)
-        .opacity(hintText != "Blank Text" ? 1 : 0)
+        .opacity(showHint ? 1 : 0)
     }
     
     private var poor: some View {
         VStack{
             Text("You don't have enough coins to purchase this")
-                .frame(width: 250, height: 100, alignment: .center)
-                .background(.white)
                 .multilineTextAlignment(.center)
-                .cornerRadius(20)
                 .font(.custom("PT Sans Caption", size: 24))
                 
-            
+            Spacer()
             Button(role: .cancel, action: {
                 withAnimation(.easeOut(duration: 0.5)){
                     poorAlert = false
@@ -276,8 +278,15 @@ struct SoccerdleView: View {
                 }
             }, label:{
                 Text("Ok")
+                    .foregroundColor(Color("correct"))
+                    .font(.custom("PT Sans Caption Bold", size: 25))
+                    
             })
         }
+        .padding(.vertical, 10)
+        .frame(width: 250, height: 200, alignment: .center)
+        .background(.white)
+        .cornerRadius(20)
         .opacity(poorAlert ? 1 : 0)
         
             
@@ -299,14 +308,13 @@ struct SoccerdleView: View {
                 HStack(spacing: 2){
                     Button{
                         if(coinsAmount >= 75){
+
                             withAnimation(.spring()){
+                                revealScreen = false
                                 guessedPlayers.append(answer)
                                 guesses += 1
                             }
-                            withAnimation(.easeOut(duration: 2).delay(0.5)){
-                                revealScreen = false
-                                
-                            }
+                           
                             
                             coinsAmount -= 75
                         }else{
@@ -373,6 +381,7 @@ struct SoccerdleView: View {
                                 withAnimation(.spring()){
                                     coinsAmount -= 50
                                 }
+                                
                                 //show the hint
                                 let whichHint = whichHintToShow()
                                 print(whichHint)

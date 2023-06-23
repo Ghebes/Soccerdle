@@ -13,16 +13,17 @@ struct CircleButton: View {
     @State var question: Bool = true
     @State var title: String = "Unlimited Soccerdle"
     
+    @ViewBuilder
     var targetView: some View {
         switch (title){
             case "Unlimited Soccerdle":
-                return SoccerdleView()
+                 SoccerdleView()
             case "Knowledge Drop":
-                return SoccerdleView()
+                 SoccerdleView()
             case "Guess Who":
-                return SoccerdleView()
+                 SoccerdleView()
             default:
-                return SoccerdleView()
+                 SoccerdleView()
         }
     }
     var body: some View {
