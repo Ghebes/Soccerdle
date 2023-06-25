@@ -10,6 +10,7 @@ import SwiftUI
 struct GuessWhoView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
     @Environment(\.dismiss) var dismiss
+    
     @Binding var level: Level
     
     var body: some View {
@@ -17,10 +18,14 @@ struct GuessWhoView: View {
             HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
                 .padding(.bottom, 40)
             
+            DisappearingImageView(image: level.imageName)
+            
+            
            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
+        .navigationBarBackButtonHidden()
             
     }
 }

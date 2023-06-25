@@ -13,7 +13,7 @@ struct Level {
     let lastName: String
     let completed: Bool
     var neededCharacters: [Character] {
-        return Array(lastName)
+        return Array(lastName.uppercased())
     }
     var imageName: Image {
         return Image("gw" + lastName.lowercased())

@@ -22,14 +22,6 @@ extension View {
         clipShape(RoundedCorners(radius: radius, corners: corners))
     }
     
-    @ViewBuilder func isHidden(_ hidden: Bool, _ action: () -> Void) -> some View {
-        
-        if(hidden){
-            self.hidden()
-        }else{
-            self
-        }
-    }
 }
 
 
@@ -58,7 +50,6 @@ struct DisappearingImageView: View {
             
         }
         hide[randomNumber].toggle()
-        print(hide)
         
         
         
