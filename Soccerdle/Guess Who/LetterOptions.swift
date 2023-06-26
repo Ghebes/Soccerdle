@@ -8,45 +8,44 @@
 import SwiftUI
 
 
+struct Letters: Identifiable {
+     
+    var id = UUID()
+    let letter: Character
+
+}
+
 struct LetterOptions: View {
     
     @Binding var level: Level
+    @State var first: [Letters] = []
+    @State var second: [Letters] = []
     
-    private var letters: [Character] {
-        var characters = level.neededCharacters
+    private var letters: [Letters] {
+        var characters = level.letters
         
         while characters.count < 14 {
             let randomValue: Int = .random(in: 65..<90)
             let addedCharacter = Character(UnicodeScalar(randomValue)!)
-            characters.append(addedCharacter)
+            characters.append(Letters(letter: addedCharacter))
         }
-        
-        return characters
+
+        return characters.shuffled()
     }
+
+    
     
     var body: some View {
         VStack{
-            HStack{
-                ForEach(letters.prefix(7), id: \.asciiValue){ letter in
-                    Letter(character: letter)
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]){
+                ForEach(letters) { letter in
+                    Letter(character: letter.letter)
                 }
             }
-            .onAppear{
-                print(letters)
-            }
-            HStack{
-                ForEach(letters, id: \.asciiValue){ letter in
-                    Letter(character: letter)
-                }
-            }
-            
         }
-        .frame(maxWidth: .infinity, maxHeight: 45)
+        .frame(maxWidth: .infinity, maxHeight: 90)
         .padding(.horizontal, 22)
-        .onAppear{
-            print(letters)
-            print(letters.count)
-        }
+        
     }
 }
 

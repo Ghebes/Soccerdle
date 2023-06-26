@@ -17,11 +17,14 @@ struct GuessLevelsView: View {
                 ScrollView(.vertical){
                     HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
                     
-                    ForEach(levels, id: \.number) {level in
-                        LevelView(level: level)
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]){
+                        ForEach(levels, id: \.number) {level in
+                            LevelView(level: level)
+                            
+                        }
+                        .padding(EdgeInsets(top: 20, leading: 19, bottom: 0, trailing: 19))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(EdgeInsets(top: 40, leading: 19, bottom: 0, trailing: 0))
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

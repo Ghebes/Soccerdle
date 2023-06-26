@@ -9,15 +9,24 @@ import SwiftUI
 
 struct Letter: View {
     @State var character: Character = Character("A")
+    @State var hidden: Bool = false
     
     var body: some View {
         VStack{
-            Text(String(character))
-                .font(.custom("PT Sans Caption Bold", size: 24))
+            if(!hidden){
+                Text(String(character))
+                    .font(.custom("PT Sans Caption Bold", size: 24))
+            }
         }
         .frame(width: 40, height: 40)
-        .background(Color("questionMark"))
+        .background(hidden ? .white : Color("questionMark"))
         .cornerRadius(5)
+        .overlay{
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(style: StrokeStyle(lineWidth: 1))
+        }
+        .shadow(radius: hidden ? 5 : 0)
+        
     }
         
 }

@@ -55,7 +55,7 @@ struct DisappearingImageView: View {
         
     }
     
-    let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    let timer = Timer.publish(every: 2, on: .main, in: .default).autoconnect()
     
     var body: some View {
         ZStack{
