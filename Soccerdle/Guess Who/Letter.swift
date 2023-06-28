@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct Letter: View {
-    @State var character: Character = Character("A")
-    @State var hidden: Bool = false
-    
+    @State var letter: Letters = Letters(letter: Character("A"))
+    @State var guesses: [Letters] = []
     var body: some View {
         VStack{
-            if(!hidden){
-                Text(String(character))
+            Text(String(letter.letter))
                     .font(.custom("PT Sans Caption Bold", size: 24))
-            }
         }
         .frame(width: 40, height: 40)
-        .background(hidden ? .white : Color("questionMark"))
+        .background(letter.clicked ? Color("wordleBackground").opacity(0.6) : Color("questionMark"))
         .cornerRadius(5)
         .overlay{
             RoundedRectangle(cornerRadius: 5)
                 .stroke(style: StrokeStyle(lineWidth: 1))
         }
-        .shadow(radius: hidden ? 5 : 0)
+        .onTapGesture {
+            letter.clicked = true
+            guesses.append(letter)
+            print(guesses)
+        }
+
         
     }
         

@@ -18,32 +18,27 @@ struct GuessWhoView: View {
     @State var showInstructions: Bool = false
     
     var body: some View {
-        VStack{
+        VStack(spacing: 30){
             HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
-                .padding(.bottom, 30)
             
             DisappearingImageView(image: level.imageName)
-
-            //Answer
-            HStack(spacing: 13){
-                ForEach(level.letters) { letters in
-                    Letter(character: letters.letter, hidden: true)
-                }
-            }
-            .padding(.top, 20)
+            
+            
             
             LetterOptions(level: $level)
             Spacer()
             
             FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealAnswer, showInstructions: $showInstructions)
-           
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
         .navigationBarBackButtonHidden()
-            
+        
     }
+    
 }
+
 
 
 struct GuessWhoView_Previews: PreviewProvider {

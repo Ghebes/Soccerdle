@@ -8,18 +8,17 @@
 import SwiftUI
 
 
-struct Letters: Identifiable {
+struct Letters: Identifiable, Equatable {
      
     var id = UUID()
     let letter: Character
-
+    var clicked: Bool = false
 }
 
 struct LetterOptions: View {
     
     @Binding var level: Level
-    @State var first: [Letters] = []
-    @State var second: [Letters] = []
+    @State var guesses: [Letters] = []
     
     private var letters: [Letters] {
         var characters = level.letters
@@ -32,20 +31,31 @@ struct LetterOptions: View {
 
         return characters.shuffled()
     }
-
     
     
     var body: some View {
-        VStack{
+        VStack(spacing: 10.0){
+            
+            //Answer
+            HStack(spacing: 10){
+                ForEach(level.letters) { letters in
+                    GuessingLetter(letterClicked: letters, guessed: guesses)
+                }
+            }
+            .padding(.top, 20)
+            
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]){
                 ForEach(letters) { letter in
-                    Letter(character: letter.letter)
+                    Letter(letter: letter, guesses: guesses)
+                       
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 90)
         .padding(.horizontal, 22)
-        
+        .onAppear{
+            guesses = Array(repeating: Letters(letter: Character("1")), count: level.letters.count)
+        }
     }
 }
 
