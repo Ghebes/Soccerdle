@@ -25,10 +25,7 @@ struct GuessWhoView: View {
             
             
             
-            LetterOptions(level: $level)
-            Spacer()
-            
-            FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealAnswer, showInstructions: $showInstructions)
+         
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

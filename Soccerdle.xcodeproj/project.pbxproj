@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4909C5902A47CC5700FDD16D /* LetterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909C58F2A47CC5700FDD16D /* LetterOptions.swift */; };
-		4909C5942A47CFB900FDD16D /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4909C5932A47CFB900FDD16D /* Letter.swift */; };
 		491681732A102CDD00E091F3 /* SoccerdleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681722A102CDD00E091F3 /* SoccerdleApp.swift */; };
 		491681772A102CDE00E091F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491681762A102CDE00E091F3 /* Assets.xcassets */; };
 		4916817A2A102CDE00E091F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491681792A102CDE00E091F3 /* Preview Assets.xcassets */; };
@@ -21,6 +19,9 @@
 		491681992A104D9700E091F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681982A104D9700E091F3 /* Player.swift */; };
 		4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819A2A104F3D00E091F3 /* HeaderView.swift */; };
 		4916819D2A105CC400E091F3 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819C2A105CC400E091F3 /* FooterView.swift */; };
+		492D24F72A4E290E003AA8DA /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24F62A4E290E003AA8DA /* Letter.swift */; };
+		492D24F92A4E2A5D003AA8DA /* Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24F82A4E2A5D003AA8DA /* Letters.swift */; };
+		492D24FB2A4E2F5B003AA8DA /* GuessingLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */; };
 		4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */; };
 		4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C02A41032D004A7164 /* GuessWhoView.swift */; };
 		4965E1C32A410343004A7164 /* GuessLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1C22A410343004A7164 /* GuessLevelsView.swift */; };
@@ -30,15 +31,12 @@
 		499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A72A116C8E0036AAE9 /* TraitView.swift */; };
 		499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A92A116CCD0036AAE9 /* Constants.swift */; };
 		499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */; };
-		49D4D2132A4B76C300498CF8 /* GuessingLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4D2122A4B76C300498CF8 /* GuessingLetter.swift */; };
 		49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E81C1C2A44F54700F706D6 /* Timers.swift */; };
 		49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EED1A92A12A45D003D829D /* ResultsView.swift */; };
 		49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F265472A42104900F29E07 /* DisappearingImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4909C58F2A47CC5700FDD16D /* LetterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterOptions.swift; sourceTree = "<group>"; };
-		4909C5932A47CFB900FDD16D /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		4916816F2A102CDD00E091F3 /* Soccerdle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soccerdle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491681722A102CDD00E091F3 /* SoccerdleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerdleApp.swift; sourceTree = "<group>"; };
 		491681762A102CDE00E091F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +51,9 @@
 		491681982A104D9700E091F3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4916819A2A104F3D00E091F3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4916819C2A105CC400E091F3 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		492D24F62A4E290E003AA8DA /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		492D24F82A4E2A5D003AA8DA /* Letters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letters.swift; sourceTree = "<group>"; };
+		492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessingLetters.swift; sourceTree = "<group>"; };
 		4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDisplayView.swift; sourceTree = "<group>"; };
 		4965E1C02A41032D004A7164 /* GuessWhoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessWhoView.swift; sourceTree = "<group>"; };
 		4965E1C22A410343004A7164 /* GuessLevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessLevelsView.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		499942A72A116C8E0036AAE9 /* TraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitView.swift; sourceTree = "<group>"; };
 		499942A92A116CCD0036AAE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingPlayerView.swift; sourceTree = "<group>"; };
-		49D4D2122A4B76C300498CF8 /* GuessingLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessingLetter.swift; sourceTree = "<group>"; };
 		49E81C1C2A44F54700F706D6 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		49EED1A92A12A45D003D829D /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		49F265472A42104900F29E07 /* DisappearingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingImageView.swift; sourceTree = "<group>"; };
@@ -187,9 +187,9 @@
 				4965E1C42A410603004A7164 /* Levels.swift */,
 				4965E1C72A41101A004A7164 /* LevelView.swift */,
 				49F265472A42104900F29E07 /* DisappearingImageView.swift */,
-				4909C58F2A47CC5700FDD16D /* LetterOptions.swift */,
-				4909C5932A47CFB900FDD16D /* Letter.swift */,
-				49D4D2122A4B76C300498CF8 /* GuessingLetter.swift */,
+				492D24F62A4E290E003AA8DA /* Letter.swift */,
+				492D24F82A4E2A5D003AA8DA /* Letters.swift */,
+				492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */,
 			);
 			path = "Guess Who";
 			sourceTree = "<group>";
@@ -267,20 +267,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4909C5942A47CFB900FDD16D /* Letter.swift in Sources */,
 				499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */,
 				49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */,
 				499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */,
 				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
+				492D24FB2A4E2F5B003AA8DA /* GuessingLetters.swift in Sources */,
 				4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */,
 				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
-				4909C5902A47CC5700FDD16D /* LetterOptions.swift in Sources */,
 				499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */,
+				492D24F72A4E290E003AA8DA /* Letter.swift in Sources */,
 				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
 				499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */,
 				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
-				49D4D2132A4B76C300498CF8 /* GuessingLetter.swift in Sources */,
 				491681812A102D8B00E091F3 /* HomeView.swift in Sources */,
+				492D24F92A4E2A5D003AA8DA /* Letters.swift in Sources */,
 				4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */,
 				4965E1C82A41101A004A7164 /* LevelView.swift in Sources */,
 				4965E1C52A410603004A7164 /* Levels.swift in Sources */,

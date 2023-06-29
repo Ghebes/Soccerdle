@@ -22,6 +22,7 @@ extension View {
         clipShape(RoundedCorners(radius: radius, corners: corners))
     }
     
+    
 }
 
 
@@ -49,6 +50,7 @@ struct DisappearingImageView: View {
             randomNumber = .random(in: 0..<9)
             
         }
+        print(randomNumber)
         hide[randomNumber].toggle()
         
         
@@ -70,65 +72,58 @@ struct DisappearingImageView: View {
             VStack(spacing: 0.0){
                 HStack(spacing: 0.0){
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[0] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: [.topLeft])
                         .onAppear{
                             randomNumberGenerate()
                         }
-                        .opacity(hide[0] ? 0 : 1)
                         
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[1] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        .opacity(hide[1] ? 0 : 1)
                     
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[2] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: .topRight)
-                        .opacity(hide[2] ? 0 : 1)
                 }
                 .frame(width: 351)
                 
                 HStack(spacing: 0.0){
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[3] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        .opacity(hide[3] ? 0 : 1)
                         
                     
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[4] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        .opacity(hide[4] ? 0 : 1)
                     
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[5] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        .opacity(hide[5] ? 0 : 1)
+                        
                 }
                 .frame(width: 351)
                 
                 
                 HStack(spacing: 0.0){
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[6] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: [.bottomLeft])
-                        .opacity(hide[6] ? 0 : 1)
                         
                     
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[7] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        .opacity(hide[7] ? 0 : 1)
                     
                     Rectangle()
-                        .fill(Color("gray"))
+                        .fill(hide[8] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: .bottomRight)
-                        .opacity(hide[8] ? 0 : 1)
+                        
                 }
                 .frame(width: 351)
                 
@@ -137,6 +132,7 @@ struct DisappearingImageView: View {
             .onReceive(timer){time in
                 randomNumberGenerate()
             }
+            
         }
         
     }

@@ -15,15 +15,14 @@ struct Level {
     var neededCharacters: [Character] {
         return Array(lastName.uppercased())
     }
-    var letters: [Letters] {
-        var letters: [Letters] = []
+    var letters: [LetterType]{
         var count = 0
-        while count < lastName.count {
-            var letter: Character =  lastName[String.Index(utf16Offset: count, in: lastName)]
-            letters.append(Letters(letter: Character(letter.uppercased())))
+        var array: [LetterType] = []
+        while count < neededCharacters.count {
+            array.append(LetterType(character: neededCharacters[count]))
             count += 1
         }
-        return letters
+        return array
     }
     var imageName: Image {
         return Image("gw" + lastName.lowercased())
