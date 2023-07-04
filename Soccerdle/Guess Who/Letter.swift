@@ -10,8 +10,19 @@ import SwiftUI
 struct Letter: View {
     @State var letter: LetterType = LetterType(character: Character(("A")))
     @Binding var guesses: [LetterType]
+    @Binding var letterOrder: Int
     var id: UUID {
         return UUID()
+    }
+   
+    func guessesFilled() -> Bool {
+        var bool = true
+        for guess in guesses {
+            if(guess.character == Character("2")){
+                bool = false
+            }
+        }
+        return bool
     }
     var body: some View {
         VStack{
@@ -22,15 +33,23 @@ struct Letter: View {
         .background(letter.clicked ? Color("wordleBackground").opacity(0.6) : Color("questionMark"))
         .cornerRadius(5)
         .onTapGesture {
-            letter.clicked = true
-            guesses.append(letter)
-            print(guesses)
+            if(!guessesFilled()){
+                letter.clicked = true
+                
+                if let i = guesses.firstIndex(where: {$0.character == Character("2")}){
+                    guesses[i] = letter
+                    letterOrder += 1
+                    print(guesses)
+                }
+            }
         }
-    }
+        .disabled(letter.clicked)
+                
+        }
 }
 
 struct Letter_Previews: PreviewProvider {
     static var previews: some View {
-        Letter(guesses: .constant([]))
+        Letter(guesses: .constant([]), letterOrder: .constant(0))
     }
 }

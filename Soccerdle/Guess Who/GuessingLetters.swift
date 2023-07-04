@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct GuessingLetters: View {
-    @State var letter = LetterType(character: "2", clicked: false)
+    @Binding var guesses: [LetterType]
+    var position: Int = 0
     
     var body: some View {
         VStack{
-            Text(letter.character == "2" ? "" : String(letter.character))
+            Text(guesses[position].character == "2" ? "" : String(guesses[position].character))
                 .font(.custom("PT Sans Caption Bold", size: 24))
         }
         .frame(width: 34, height: 34)
-        .background(letter.clicked ? Color("questionMark") : .clear)
+        .background(guesses[position].clicked ? Color("questionMark") : .clear)
         .overlay{
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 1)
         }
         .shadow(radius: 4)
+        
+        
     }
 }
 
 struct GuessingLetters_Previews: PreviewProvider {
     static var previews: some View {
-        GuessingLetters()
+        GuessingLetters(guesses: .constant([LetterType(character: Character("A")), LetterType(character: Character("B"))]), position: 0)
     }
 }
