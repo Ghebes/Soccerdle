@@ -52,14 +52,10 @@ struct Letter: View {
                     guesses[i] = letter
                     
                     letterOrder += 1
-                    print(guesses)
                 }
             }
         }
         .disabled(clickedValue)
-        .onAppear{
-            print("\(String(letter.character)) \(letter.id)")
-        }
         }
 }
 

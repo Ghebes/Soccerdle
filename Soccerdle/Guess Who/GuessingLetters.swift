@@ -22,7 +22,9 @@ struct GuessingLetters: View {
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 1)
         }
-        .shadow(radius: 4)
+        .cornerRadius(5)
+        .shadow(radius: 6)
+        
         
         
     }
