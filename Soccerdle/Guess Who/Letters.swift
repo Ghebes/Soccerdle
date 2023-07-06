@@ -21,7 +21,7 @@ struct Letters: View {
     @State var finalLettersTest: [LetterType] = []
     @State var clickedArray : [Bool] = Array(repeating: false, count: 14)
     @Binding var won: Bool
-    @State var incorrect: Bool = false
+    @Binding var incorrect: Bool
     
     var allLetters: [LetterType] {
         
@@ -38,20 +38,25 @@ struct Letters: View {
     func playerWon() -> Bool{
         if(amountFilled() == level.letters.count){
             //check to see if the answer is correct
-            print(guesses)
-            print(level.letters)
             
             for index in level.letters.indices{
                 if(guesses[index].character != level.letters[index].character){
                     won = false
-                    incorrect = true
+                    withAnimation(.easeInOut(duration: 0.5).repeatCount(2)){
+                        incorrect = true
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                        withAnimation(.easeOut(duration: 0.5)){
+                            incorrect = false
+                        }
+                    }
                     print(won)
                     print(incorrect)
                     return false
-                    
                 }
+               
             }
-            
             won = true
             incorrect = false
             return true
@@ -80,11 +85,12 @@ struct Letters: View {
             VStack(spacing: 10){
                 HStack{
                     ForEach(level.letters.indices){ index in
-                        GuessingLetters(guesses: $guesses, position: index)
+                        GuessingLetters(guesses: $guesses, position: index, incorrect: $incorrect)
                             
       
                     }
                 }
+                .offset(y: incorrect ? 2 : -2)
                 
                 
                 HStack{
@@ -142,6 +148,6 @@ struct Letters: View {
 
 struct Letters_Previews: PreviewProvider {
     static var previews: some View {
-        Letters( won: .constant(false))
+        Letters( won: .constant(false), incorrect: .constant(false))
     }
 }

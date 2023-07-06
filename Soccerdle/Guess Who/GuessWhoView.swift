@@ -17,6 +17,8 @@ struct GuessWhoView: View {
     @State var revealAnswer: Bool = false
     @State var showInstructions: Bool = false
     @State var won: Bool = false
+    @State var incorrect: Bool = false
+    
     private var winScreen: some View {
         VStack{
             Text("WON")
@@ -26,6 +28,32 @@ struct GuessWhoView: View {
         .opacity(won ? 1 : 0)
     }
     
+    private var hint: some View {
+        VStack{
+            Text("HINT")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.blue)
+        .opacity(hintScreen ? 1 : 0)
+    }
+    
+    private var instructions: some View {
+        VStack{
+            Text("INSTRUCTIONS")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.black)
+        .opacity(showInstructions ? 1 : 0)
+    }
+    
+    private var reveal: some View {
+        VStack{
+            Text("Reveal Answer")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.green)
+        .opacity(revealAnswer ? 1 : 0)
+    }
     var body: some View {
         ZStack{
             VStack(spacing: 30){
@@ -33,15 +61,19 @@ struct GuessWhoView: View {
                 
                 DisappearingImageView(image: level.imageName)
                 
-                Letters(level: level, won: $won)
+                Letters(level: level, won: $won, incorrect: $incorrect)
     
-                
+                FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealAnswer, showInstructions: $showInstructions)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color("background"))
             .navigationBarBackButtonHidden()
             
             winScreen
+            
+            hint
+            instructions
+            reveal
         }
         
     }
