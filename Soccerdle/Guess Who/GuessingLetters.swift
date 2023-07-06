@@ -17,7 +17,7 @@ struct GuessingLetters: View {
                 .font(.custom("PT Sans Caption Bold", size: 24))
         }
         .frame(width: 34, height: 34)
-        .background(guesses[position].clicked ? Color("questionMark") : .clear)
+        .background(guesses[position].character != "2" ? Color("questionMark") : .clear)
         .overlay{
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 1)
