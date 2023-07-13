@@ -14,7 +14,8 @@ struct LevelView: View {
     var body: some View {
         VStack{
             NavigationLink{
-                GuessWhoView(level: $level)
+                    GuessWhoView(level: $level)
+                
             }label: {
                 Text(String(level.number))
                     .foregroundColor(level.completed ? .white : .black)
@@ -24,6 +25,9 @@ struct LevelView: View {
         .frame(width: 55, height: 55)
         .background(currentLevel == level.number ? .white: level.completed ? Color("correct") : Color("wordleBackground"))
         .cornerRadius(15)
+        .onAppear {
+            print("HERE")
+        }
     }
 }
 

@@ -15,16 +15,30 @@ struct HeaderView: View {
     var body: some View {
         
         HStack{
-            Button{
-                action()
-                print("Pressed")
-            }label: {
-                Image("arrow")
-                    .resizable()
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 40, alignment: .leading)
+            if(title == "Guess Who"){
+                NavigationLink{
+                   GuessLevelsView()
+                }label: {
+                    Image("arrow")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 40, alignment: .leading)
+                }
+                .frame(alignment: .leading)
             }
-            .frame(alignment: .leading)
+            else{
+                Button{
+                    action()
+                    print("Pressed")
+                }label: {
+                    Image("arrow")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 40, alignment: .leading)
+                }
+                .frame(alignment: .leading)
+            }
+            
             
             Text(title)
                 .foregroundColor(.white)

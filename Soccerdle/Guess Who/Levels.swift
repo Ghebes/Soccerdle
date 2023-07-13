@@ -11,7 +11,7 @@ struct Level {
     let number: Int
     let playerName: String
     let lastName: String
-    let completed: Bool
+    var completed: Bool
     var neededCharacters: [Character] {
         return Array(lastName.uppercased())
     }
@@ -32,7 +32,7 @@ struct Level {
 
 var levels: [Level] = [
     Level(number: 1, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 2, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+    Level(number: 2, playerName: "Lionel Mesis", lastName:"Messi", completed: false),
     Level(number: 3, playerName: "Lionel Messi", lastName:"Messi", completed: false),
     Level(number: 4, playerName: "Lionel Messi", lastName:"Messi", completed: false),
     Level(number: 5, playerName: "Lionel Messi", lastName:"Messi", completed: false),

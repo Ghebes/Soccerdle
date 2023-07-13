@@ -15,7 +15,7 @@ struct Letter: View {
     @Binding var allLetters: [LetterType]
     
     var clickedValue: Bool {
-        guard var index = allLetters.firstIndex(where: {$0.id == letter.id}) else {
+        guard let index = allLetters.firstIndex(where: {$0.id == letter.id}) else {
             print("ERROR")
             return false
         }
@@ -42,7 +42,7 @@ struct Letter: View {
         .cornerRadius(5)
         .onTapGesture {
             if(!guessesFilled()){
-                guard var index = allLetters.firstIndex(where: {$0.id == letter.id}) else {
+                guard let index = allLetters.firstIndex(where: {$0.id == letter.id}) else {
                     print("ERROR")
                     return
                 }
@@ -54,6 +54,8 @@ struct Letter: View {
                     letterOrder += 1
                 }
             }
+            
+            
         }
         .disabled(clickedValue)
         }

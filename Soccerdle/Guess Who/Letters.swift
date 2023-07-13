@@ -55,14 +55,21 @@ struct Letters: View {
                     print(incorrect)
                     return false
                 }
-               
+                
             }
-            won = true
-            incorrect = false
+            DispatchQueue.main.async {
+                won = true
+                incorrect = false
+            }
+          
             return true
         }else{
-            won = false
-            incorrect = false
+            DispatchQueue.main.async {
+                won = false
+                incorrect = false
+            }
+            
+            
             return false
         }
     }
@@ -75,73 +82,73 @@ struct Letters: View {
         }
         return count
     }
-
+    
     /*
      The issue is that the clicked attribute is assigned to the letter and not to the array so changing the array does nothing
      */
     
     
     var body: some View {
-            VStack(spacing: 10){
-                HStack{
-                    ForEach(level.letters.indices){ index in
-                        GuessingLetters(guesses: $guesses, position: index, incorrect: $incorrect)
-                            
-      
-                    }
-                }
-                .offset(y: incorrect ? 2 : -2)
-                
-                
-                HStack{
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 35))]){
-                        ForEach(finalLettersTest){ letter in
-                            Letter(letter: letter, guesses: $guesses, letterOrder: $letterOrder, clickedArray: $clickedArray, allLetters: $finalLettersTest)
-                                
-                                
-                        }
-                    }
-                    .frame(width: 330)
+        VStack(spacing: 10){
+            HStack{
+                ForEach(level.letters.indices){ index in
+                    GuessingLetters(guesses: $guesses, position: index, incorrect: $incorrect)
                     
-
-                    
-                    VStack{
-                        Image(systemName: "delete.left")
-                            .resizable()
-                            .frame(width: 20, height: 25)
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 80)
-                    .background(Color("wrong"))
-                    .cornerRadius(10)
-                    .onTapGesture {
-                        if(amountFilled() != 0){
-                            
-                            let idToRemove = guesses[amountFilled() - 1].id
-                            
-                           //look for id
-                            guard let correctIndex = finalLettersTest.firstIndex(where: {$0.id == idToRemove}) else {
-                                print("ERROR")
-                                return
-                            }
-                            clickedArray[correctIndex] = false
-                            
-                            
-                            guesses[amountFilled() - 1] = LetterType(character: "2")
-                        }
-                    }
-                    
-                        
-                        
-                }
-                .frame(width: .infinity, alignment: .leading)
-                .onAppear{
-                    finalLettersTest = allLetters
                     
                 }
             }
-            .blur(radius: playerWon() ? 10: 0)
-           
+            .offset(y: incorrect ? 2 : -2)
+            
+            
+            HStack{
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 35))]){
+                    ForEach(finalLettersTest){ letter in
+                        Letter(letter: letter, guesses: $guesses, letterOrder: $letterOrder, clickedArray: $clickedArray, allLetters: $finalLettersTest)
+                        
+                        
+                    }
+                }
+                .frame(width: 330)
+                
+                
+                
+                VStack{
+                    Image(systemName: "delete.left")
+                        .resizable()
+                        .frame(width: 20, height: 25)
+                }
+                .foregroundColor(.white)
+                .frame(width: 40, height: 80)
+                .background(Color("wrong"))
+                .cornerRadius(10)
+                .onTapGesture {
+                    if(amountFilled() != 0){
+                        
+                        let idToRemove = guesses[amountFilled() - 1].id
+                        
+                        //look for id
+                        guard let correctIndex = finalLettersTest.firstIndex(where: {$0.id == idToRemove}) else {
+                            print("ERROR")
+                            return
+                        }
+                        clickedArray[correctIndex] = false
+                        
+                        
+                        guesses[amountFilled() - 1] = LetterType(character: "2")
+                    }
+                }
+                
+                
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .onAppear{
+                finalLettersTest = allLetters
+                
+            }
+        }
+        .blur(radius: playerWon() ? 10: 0)
+        
         
     }
 }

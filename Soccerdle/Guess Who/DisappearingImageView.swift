@@ -29,7 +29,8 @@ extension View {
 struct DisappearingImageView: View {
     @State var image: Image = levels[0].imageName
     @State var randomNumber: Int = .random(in: 0..<9)
-    
+    @Binding var won: Bool
+    @Binding var imagesRemoved: Int
     @State var hide: [Bool] = [false, false, false, false, false, false, false, false, false]
     
     
@@ -53,7 +54,7 @@ struct DisappearingImageView: View {
         print(randomNumber)
         hide[randomNumber].toggle()
         
-        
+        imagesRemoved += 1
         
     }
     
@@ -130,7 +131,13 @@ struct DisappearingImageView: View {
                 
             }
             .onReceive(timer){time in
-                randomNumberGenerate()
+                if(won){
+                    self.timer.upstream.connect().cancel()
+                }else{
+                    randomNumberGenerate()
+                }
+                
+                
             }
             
         }
@@ -140,6 +147,6 @@ struct DisappearingImageView: View {
 
 struct DisappearingImageView_Previews: PreviewProvider {
     static var previews: some View {
-        DisappearingImageView()
+        DisappearingImageView(won: .constant(false), imagesRemoved: .constant(0))
     }
 }

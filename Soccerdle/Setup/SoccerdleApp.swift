@@ -14,7 +14,7 @@ struct SoccerdleApp: App {
     @AppStorage("level", store: .standard) var currentLevel: Int = 1
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            GuessLevelsView()
                 .preferredColorScheme(.light)
             
         }
