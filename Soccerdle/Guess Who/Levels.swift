@@ -7,7 +7,9 @@
 
 import Foundation
 import SwiftUI
-struct Level {
+struct Level: Identifiable {
+    var id = UUID()
+    
     let number: Int
     let playerName: String
     let lastName: String
@@ -30,15 +32,18 @@ struct Level {
     
 }
 
-var levels: [Level] = [
-    Level(number: 1, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 2, playerName: "Lionel Mesis", lastName:"Messi", completed: false),
-    Level(number: 3, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 4, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 5, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 6, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 7, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 8, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 9, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-    Level(number: 10, playerName: "Lionel Messi", lastName:"Messi", completed: false),
-]
+class LevelInformation : ObservableObject{
+    
+    @Published var levels: [Level] = [
+        Level(number: 1, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 2, playerName: "Lionel Mesis", lastName:"Messi", completed: false),
+        Level(number: 3, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 4, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 5, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 6, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 7, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 8, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 9, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+        Level(number: 10, playerName: "Lionel Messi", lastName:"Messi", completed: false),
+    ]
+}

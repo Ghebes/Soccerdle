@@ -10,7 +10,7 @@ import SwiftUI
 struct GuessLevelsView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
     @Environment(\.dismiss) var dismiss
-    
+    @ObservedObject var allLevels = LevelInformation()
     var body: some View {
         NavigationView{
             VStack{
@@ -18,7 +18,7 @@ struct GuessLevelsView: View {
                     HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
                     
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]){
-                        ForEach(levels, id: \.number) {level in
+                        ForEach(allLevels.levels) {level in
                             LevelView(level: level)
                             
                         }

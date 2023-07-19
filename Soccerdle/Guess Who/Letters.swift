@@ -14,8 +14,10 @@ struct LetterType: Identifiable {
 
 
 struct Letters: View {
+    @State var calledOnce: Bool = false
     
-    @State var level: Level = levels[0]
+    @State var calculateCoins = {}
+    @State var level: Level = LevelInformation().levels[0]
     @State var guesses: [LetterType] = Array(repeating: LetterType(character: "2"), count: 5)
     @State var letterOrder: Int  = 0
     @State var finalLettersTest: [LetterType] = []
@@ -59,6 +61,13 @@ struct Letters: View {
             }
             DispatchQueue.main.async {
                 won = true
+                if(!calledOnce){
+                    calculateCoins()
+                    calledOnce = true
+                }
+                level.completed = true
+                print(level)
+                
                 incorrect = false
             }
           
@@ -83,9 +92,6 @@ struct Letters: View {
         return count
     }
     
-    /*
-     The issue is that the clicked attribute is assigned to the letter and not to the array so changing the array does nothing
-     */
     
     
     var body: some View {
@@ -155,6 +161,6 @@ struct Letters: View {
 
 struct Letters_Previews: PreviewProvider {
     static var previews: some View {
-        Letters( won: .constant(false), incorrect: .constant(false))
+        Letters(calculateCoins: {},won: .constant(false), incorrect: .constant(false))
     }
 }

@@ -33,6 +33,6 @@ struct LevelView: View {
 
 struct LevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LevelView(level: levels[0])
+        LevelView(level: LevelInformation().levels[0])
     }
 }

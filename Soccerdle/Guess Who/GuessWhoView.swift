@@ -13,18 +13,19 @@ struct GuessWhoView: View {
     
     @Binding var level: Level
     
+    @State var addedCoins: Int = 0
     @State var hintScreen: Bool = false
     @State var revealAnswer: Bool = false
     @State var showInstructions: Bool = false
     @State var won: Bool = false
     @State var incorrect: Bool = false
-    @State var nextLevel: Level = levels[0]
+    @State var nextLevel: Level = LevelInformation().levels[0]
     @State var imagesRemoved: Int = 0
     
     private var winScreen: some View {
         VStack(spacing: 2.0){
             HStack(alignment: .center, spacing: 10.0){
-                Text("+2")
+                Text(String(addedCoins))
                     .foregroundColor(Color("correct"))
                     .font(.custom("PT Sans Caption Bold", size: 34))
                 
@@ -51,7 +52,7 @@ struct GuessWhoView: View {
             
             NavigationLink{
                 //check if there is a next level
-                if(level.number <= levels.count){
+                if(level.number <= LevelInformation().levels.count){
                     GuessWhoView(level: $nextLevel)
                 }else{
                     GuessLevelsView()
@@ -75,7 +76,7 @@ struct GuessWhoView: View {
         .cornerRadius(50)
         .offset(y: -30)
         .onAppear{
-            nextLevel = levels.first(where: {$0.number == level.number + 1})!
+            nextLevel = LevelInformation().levels.first(where: {$0.number == level.number + 1})!
         }
         .opacity(won ? 1 : 0)
     }
@@ -107,16 +108,12 @@ struct GuessWhoView: View {
         .opacity(revealAnswer ? 1 : 0)
     }
     
-    private func calculateCoins() -> Int {
-        if(won){
-            let number = 9 - imagesRemoved
-            coinsAmount += number
-            
-            return number
-        }else{
-            return 0
-        }
+   
+    func calculateCoins() {
+        addedCoins = 9 - imagesRemoved
+        coinsAmount += addedCoins
     }
+    
     
     var body: some View {
         ZStack{
@@ -125,7 +122,7 @@ struct GuessWhoView: View {
                 
                 DisappearingImageView(image: level.imageName, won: $won, imagesRemoved: $imagesRemoved)
                 
-                Letters(level: level, won: $won, incorrect: $incorrect)
+                Letters(calculateCoins: calculateCoins, level: level, won: $won, incorrect: $incorrect)
                 
                 FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealAnswer, showInstructions: $showInstructions)
             }
@@ -148,6 +145,6 @@ struct GuessWhoView: View {
 
 struct GuessWhoView_Previews: PreviewProvider {
     static var previews: some View {
-        GuessWhoView(level: Binding.constant(levels[0]))
+        GuessWhoView(level: Binding.constant(LevelInformation().levels[0]))
     }
 }

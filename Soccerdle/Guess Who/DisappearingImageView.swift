@@ -27,7 +27,8 @@ extension View {
 
 
 struct DisappearingImageView: View {
-    @State var image: Image = levels[0].imageName
+    @AppStorage("coins") var coinsAmount: Int = 100
+    @State var image: Image = LevelInformation().levels[0].imageName
     @State var randomNumber: Int = .random(in: 0..<9)
     @Binding var won: Bool
     @Binding var imagesRemoved: Int
@@ -60,6 +61,7 @@ struct DisappearingImageView: View {
     
     let timer = Timer.publish(every: 2, on: .main, in: .default).autoconnect()
     
+    
     var body: some View {
         ZStack{
             image
@@ -79,7 +81,7 @@ struct DisappearingImageView: View {
                         .onAppear{
                             randomNumberGenerate()
                         }
-                        
+                    
                     Rectangle()
                         .fill(hide[1] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
@@ -95,7 +97,7 @@ struct DisappearingImageView: View {
                     Rectangle()
                         .fill(hide[3] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        
+                    
                     
                     Rectangle()
                         .fill(hide[4] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
@@ -104,7 +106,7 @@ struct DisappearingImageView: View {
                     Rectangle()
                         .fill(hide[5] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
-                        
+                    
                 }
                 .frame(width: 351)
                 
@@ -114,7 +116,7 @@ struct DisappearingImageView: View {
                         .fill(hide[6] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: [.bottomLeft])
-                        
+                    
                     
                     Rectangle()
                         .fill(hide[7] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
@@ -124,7 +126,7 @@ struct DisappearingImageView: View {
                         .fill(hide[8] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .frame(width: 117, height: 147)
                         .roundedCorners(20, corners: .bottomRight)
-                        
+                    
                 }
                 .frame(width: 351)
                 
@@ -133,6 +135,8 @@ struct DisappearingImageView: View {
             .onReceive(timer){time in
                 if(won){
                     self.timer.upstream.connect().cancel()
+                
+                    
                 }else{
                     randomNumberGenerate()
                 }
@@ -142,7 +146,9 @@ struct DisappearingImageView: View {
             
         }
         
+        
     }
+    
 }
 
 struct DisappearingImageView_Previews: PreviewProvider {
