@@ -13,6 +13,8 @@ struct GuessWhoView: View {
     
     @Binding var level: Level
     
+    @State var calledOnce: Bool = false
+    
     @State var addedCoins: Int = 0
     @State var hintScreen: Bool = false
     @State var revealAnswer: Bool = false
@@ -76,7 +78,13 @@ struct GuessWhoView: View {
         .cornerRadius(50)
         .offset(y: -30)
         .onAppear{
-            nextLevel = LevelInformation().levels.first(where: {$0.number == level.number + 1})!
+            guard let levelNext = LevelInformation().levels.first(where: {$0.number == level.number + 1}) else {
+                nextLevel = Level(number: 10000, playerName: "", lastName: "")
+                return
+            }
+            nextLevel = levelNext
+            calledOnce = false
+            won = false
         }
         .opacity(won ? 1 : 0)
     }
@@ -122,7 +130,7 @@ struct GuessWhoView: View {
                 
                 DisappearingImageView(image: level.imageName, won: $won, imagesRemoved: $imagesRemoved)
                 
-                Letters(calculateCoins: calculateCoins, level: level, won: $won, incorrect: $incorrect)
+                Letters(calledOnce: calledOnce, calculateCoins: calculateCoins, level: level, won: $won, incorrect: $incorrect)
                 
                 FooterView(hintScreen: $hintScreen, revealAnswerAlert: $revealAnswer, showInstructions: $showInstructions)
             }

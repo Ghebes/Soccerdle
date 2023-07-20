@@ -14,8 +14,10 @@ struct LetterType: Identifiable {
 
 
 struct Letters: View {
-    @State var calledOnce: Bool = false
+    @AppStorage("guessWho") var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
+    @AppStorage("level") var currentLevel: Int = 1
     
+    @State var calledOnce: Bool = false
     @State var calculateCoins = {}
     @State var level: Level = LevelInformation().levels[0]
     @State var guesses: [LetterType] = Array(repeating: LetterType(character: "2"), count: 5)
@@ -43,10 +45,13 @@ struct Letters: View {
             
             for index in level.letters.indices{
                 if(guesses[index].character != level.letters[index].character){
-                    won = false
-                    withAnimation(.easeInOut(duration: 0.5).repeatCount(2)){
-                        incorrect = true
+                    DispatchQueue.main.async {
+                        won = false
+                        withAnimation(.easeInOut(duration: 0.5).repeatCount(2)){
+                            incorrect = true
+                        }
                     }
+                   
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         withAnimation(.easeOut(duration: 0.5)){
@@ -61,13 +66,19 @@ struct Letters: View {
             }
             DispatchQueue.main.async {
                 won = true
+                print("ONCE ", calledOnce)
                 if(!calledOnce){
+                    
                     calculateCoins()
                     calledOnce = true
+                    currentLevel += 1
+                    print(currentLevel)
+                    print("STOP")
                 }
-                level.completed = true
-                print(level)
-                
+                if(level.number < 3000 ){
+                    guessWho[level.number - 1] = true
+                }
+                print(guessWho)
                 incorrect = false
             }
           

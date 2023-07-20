@@ -47,15 +47,19 @@ struct DisappearingImageView: View {
     }
     
     func randomNumberGenerate() {
-        randomNumber = .random(in: 0..<9)
-        while(hide[randomNumber] == true){
-            randomNumber = .random(in: 0..<9)
-            
-        }
-        print(randomNumber)
-        hide[randomNumber].toggle()
         
-        imagesRemoved += 1
+        if(imagesRemoved != 9){
+            randomNumber = .random(in: 0..<9)
+            while(hide[randomNumber] == true){
+                randomNumber = .random(in: 0..<9)
+                
+            }
+            
+            print(randomNumber)
+            hide[randomNumber].toggle()
+            
+            imagesRemoved += 1
+        }
         
     }
     
