@@ -14,7 +14,7 @@ struct SoccerdleApp: App {
     @AppStorage("guessWho", store: .standard) var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
     var body: some Scene {
         WindowGroup {
-            GuessLevelsView()
+            HomeView()
                 .preferredColorScheme(.light)
             
         }

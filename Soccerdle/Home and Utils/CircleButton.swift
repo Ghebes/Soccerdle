@@ -18,10 +18,8 @@ struct CircleButton: View {
         switch (title){
             case "Unlimited Soccerdle":
                  SoccerdleView()
-            case "Knowledge Drop":
-                 SoccerdleView()
             case "Guess Who":
-                 SoccerdleView()
+                 GuessLevelsView()
             default:
                  SoccerdleView()
         }

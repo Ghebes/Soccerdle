@@ -17,7 +17,7 @@ struct HeaderView: View {
         HStack{
             if(title == "Guess Who"){
                 NavigationLink{
-                   GuessLevelsView()
+                    GuessLevelsView()
                 }label: {
                     Image("arrow")
                         .resizable()
@@ -26,7 +26,17 @@ struct HeaderView: View {
                 }
                 .frame(alignment: .leading)
             }
-            else{
+            else if(title == "Guess Who "){
+                NavigationLink{
+                    HomeView()
+                }label: {
+                    Image("arrow")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 40, alignment: .leading)
+                }
+                .frame(alignment: .leading)
+            }else{
                 Button{
                     action()
                     print("Pressed")

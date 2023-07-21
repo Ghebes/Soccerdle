@@ -15,7 +15,7 @@ struct GuessLevelsView: View {
         NavigationView{
             VStack{
                 ScrollView(.vertical){
-                    HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
+                    HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who ")
                     
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]){
                         ForEach(allLevels.levels) {level in

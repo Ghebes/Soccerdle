@@ -84,7 +84,6 @@ struct GuessWhoView: View {
             }
             nextLevel = levelNext
             calledOnce = false
-            won = false
         }
         .opacity(won ? 1 : 0)
     }

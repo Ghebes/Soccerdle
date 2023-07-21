@@ -58,8 +58,6 @@ struct Letters: View {
                             incorrect = false
                         }
                     }
-                    print(won)
-                    print(incorrect)
                     return false
                 }
                 

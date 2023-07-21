@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
+    
+    var SCREEN_HEIGHT = UIScreen.main.bounds.size.height
     var body: some View {
         NavigationView{
             VStack(spacing: 10.0){
@@ -32,18 +35,20 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .font(.custom("PT Sans Caption Bold", size: 50))
                 
-                VStack(spacing: 45.0){
+                VStack(spacing: 80){
                     CircleButton(question: false)
                     
-                    CircleButton(image: Image("knowledge"), question: false, title: "Knowledge Drop")
                     
                     CircleButton(image: Image("guess"), question: true, title: "Guess Who")
                 }
+                .frame(height: SCREEN_HEIGHT * 0.7, alignment: .center)
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color("background"))
             
         }
+        .navigationBarBackButtonHidden()
         
     }
 }
