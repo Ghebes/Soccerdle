@@ -33,7 +33,7 @@ struct DisappearingImageView: View {
     @Binding var won: Bool
     @Binding var imagesRemoved: Int
     @State var hide: [Bool] = [false, false, false, false, false, false, false, false, false]
-    
+    @Binding var hint: Bool
     
     
     func imageCompleted() -> Bool {
@@ -137,10 +137,8 @@ struct DisappearingImageView: View {
                 
             }
             .onReceive(timer){time in
-                if(won){
+                if(won || hint){
                     self.timer.upstream.connect().cancel()
-                
-                    
                 }else{
                     randomNumberGenerate()
                 }
@@ -157,6 +155,6 @@ struct DisappearingImageView: View {
 
 struct DisappearingImageView_Previews: PreviewProvider {
     static var previews: some View {
-        DisappearingImageView(won: .constant(false), imagesRemoved: .constant(0))
+        DisappearingImageView(won: .constant(false), imagesRemoved: .constant(0), hint: .constant(false))
     }
 }

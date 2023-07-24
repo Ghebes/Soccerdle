@@ -26,8 +26,9 @@ struct Letters: View {
     @State var clickedArray : [Bool] = Array(repeating: false, count: 14)
     @Binding var won: Bool
     @Binding var incorrect: Bool
-    
-    
+    @Binding var hint: Bool
+    @Binding var reveal: Bool
+    @Binding var instructions: Bool
     
     var allLetters: [LetterType] {
         
@@ -67,6 +68,8 @@ struct Letters: View {
 
             //taking time to restart for some reason
             DispatchQueue.main.async {
+                
+                
                 won = true
                 print("ONCE ", calledOnce)
                 if(!calledOnce){
@@ -81,8 +84,8 @@ struct Letters: View {
                     guessWho[level.number - 1] = true
                 }
                 incorrect = false
+                
             }
-          
             return true
         }else{
             DispatchQueue.main.async {
@@ -165,7 +168,7 @@ struct Letters: View {
                 
             }
         }
-        .blur(radius: playerWon() ? 10: 0)
+        .blur(radius: ((playerWon() && reveal) || hint || instructions)  ? 10: 0)
         
         
     }
@@ -173,6 +176,6 @@ struct Letters: View {
 
 struct Letters_Previews: PreviewProvider {
     static var previews: some View {
-        Letters(calculateCoins: {},guesses: .constant([]), won: .constant(false), incorrect: .constant(false))
+        Letters(calculateCoins: {},guesses: .constant([LetterType(character: "2"),LetterType(character: "2"),LetterType(character: "2"),LetterType(character: "2"),LetterType(character: "2")]), won: .constant(false), incorrect: .constant(false), hint: .constant(false), reveal: .constant(false), instructions: .constant(false))
     }
 }
