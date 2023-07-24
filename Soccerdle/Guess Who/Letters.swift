@@ -20,12 +20,14 @@ struct Letters: View {
     @State var calledOnce: Bool = false
     @State var calculateCoins = {}
     @State var level: Level = LevelInformation().levels[0]
-    @State var guesses: [LetterType] = Array(repeating: LetterType(character: "2"), count: 5)
+    @Binding var guesses: [LetterType]
     @State var letterOrder: Int  = 0
     @State var finalLettersTest: [LetterType] = []
     @State var clickedArray : [Bool] = Array(repeating: false, count: 14)
     @Binding var won: Bool
     @Binding var incorrect: Bool
+    
+    
     
     var allLetters: [LetterType] {
         
@@ -62,6 +64,8 @@ struct Letters: View {
                 }
                 
             }
+
+            //taking time to restart for some reason
             DispatchQueue.main.async {
                 won = true
                 print("ONCE ", calledOnce)
@@ -76,7 +80,6 @@ struct Letters: View {
                 if(level.number < 3000 ){
                     guessWho[level.number - 1] = true
                 }
-                print(guessWho)
                 incorrect = false
             }
           
@@ -170,6 +173,6 @@ struct Letters: View {
 
 struct Letters_Previews: PreviewProvider {
     static var previews: some View {
-        Letters(calculateCoins: {},won: .constant(false), incorrect: .constant(false))
+        Letters(calculateCoins: {},guesses: .constant([]), won: .constant(false), incorrect: .constant(false))
     }
 }
