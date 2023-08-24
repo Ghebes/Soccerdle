@@ -28,15 +28,16 @@ extension View {
 
 //MARK:- Disappearing Image
 struct DisappearingImageView: View{
-    
+    @Binding var level: Level
     @Binding var hide: [Bool]
     let timer = Timer.publish(every: 2, on: .main, in: .default).autoconnect()
     @Binding var imagesRemoved: Int
     @Binding var won: Bool
+    @Binding var showAnswer: Bool
     
     var body: some View{
         ZStack{
-            Image("gwmessi")
+            Image("gw" + level.lastName.lowercased())
                 .resizable()
                 .frame(width: 351, height: 437)
                 .cornerRadius(20)
@@ -44,33 +45,33 @@ struct DisappearingImageView: View{
             VStack(spacing: 0){
                 HStack(spacing:0){
                     Rectangle()
-                        .fill(hide[0] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[0] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .cornerRadius(20, corners: .topLeft)
                     Rectangle()
-                        .fill(hide[1] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[1] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                     Rectangle()
-                        .fill(hide[2] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[2] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .cornerRadius(20, corners: .topRight)
                     
                 }
                 HStack(spacing: 0){
                     Rectangle()
-                        .fill(hide[3] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[3] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                     Rectangle()
-                        .fill(hide[4] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[4] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                     Rectangle()
-                        .fill(hide[5] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[5] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                     
                 }
                 HStack(spacing: 0){
                     Rectangle()
-                        .fill(hide[6] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[6] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .cornerRadius(20, corners: .bottomLeft)
                     Rectangle()
-                        .fill(hide[7] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[7] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                     
                     Rectangle()
-                        .fill(hide[8] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
+                        .fill(hide[8] || won ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
                         .cornerRadius(20, corners: .bottomRight)
                     
                 }
@@ -91,6 +92,7 @@ struct DisappearingImageView: View{
             }
             
         }
+        
         .padding(.horizontal, 20)
     }
 }

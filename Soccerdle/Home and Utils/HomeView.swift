@@ -18,15 +18,18 @@ struct HomeView: View {
                 
                 HStack(spacing: 8.0){
                     Spacer()
-                    
-                    Text(String(coinsAmount))
-                        .foregroundColor(.white)
-                        .font(.custom("PT Sans Caption", size: 20))
-                    
-                    Image("coins")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
+                    NavigationLink{
+                        Store()
+                    }label: {
+                        Text(String(coinsAmount))
+                            .foregroundColor(.white)
+                            .font(.custom("PT Sans Caption", size: 20))
+                            
+                        Image("coins")
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .trailing)
+                            .foregroundColor(.white)
+                    }
                 }
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: -10, trailing: 20))
                 

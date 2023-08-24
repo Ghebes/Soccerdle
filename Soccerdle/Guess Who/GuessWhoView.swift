@@ -331,8 +331,9 @@ struct GuessWhoView: View {
             }
         }
         
-
-        won = true
+        withAnimation(.easeIn(duration: 1)){
+            won = true
+        }
         calculateCoins()
         incorrect = false
         currentLevel += 1
@@ -358,7 +359,7 @@ struct GuessWhoView: View {
                 HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
                 
                 
-                DisappearingImageView(hide: $hide, imagesRemoved: $imagesRemoved, won: $won)
+                DisappearingImageView(level: $level, hide: $hide, imagesRemoved: $imagesRemoved, won: $won, showAnswer: $showAnswer)
                 
                 //GuessingLetters
                 HStack(spacing: 10){

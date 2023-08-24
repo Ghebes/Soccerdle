@@ -32,6 +32,7 @@
 		499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */; };
 		49AC7F852A96EEE000CD82D9 /* NormalLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC7F842A96EEE000CD82D9 /* NormalLetter.swift */; };
 		49AC7F872A96F2C000CD82D9 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */; };
+		49CB0EF82A97BF0900EAD9DC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0EF72A97BF0900EAD9DC /* Store.swift */; };
 		49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E81C1C2A44F54700F706D6 /* Timers.swift */; };
 		49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EED1A92A12A45D003D829D /* ResultsView.swift */; };
 		49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F265472A42104900F29E07 /* DisappearingImageView.swift */; };
@@ -66,6 +67,7 @@
 		499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingPlayerView.swift; sourceTree = "<group>"; };
 		49AC7F842A96EEE000CD82D9 /* NormalLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalLetter.swift; sourceTree = "<group>"; };
 		49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		49CB0EF72A97BF0900EAD9DC /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		49E81C1C2A44F54700F706D6 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		49EED1A92A12A45D003D829D /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		49F265472A42104900F29E07 /* DisappearingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingImageView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		491681712A102CDD00E091F3 /* Soccerdle */ = {
 			isa = PBXGroup;
 			children = (
+				49CB0EF72A97BF0900EAD9DC /* Store.swift */,
 				4965E1BF2A41031B004A7164 /* Guess Who */,
 				4965E1B82A40CBD9004A7164 /* Knowledge */,
 				491681892A102F3900E091F3 /* Info.plist */,
@@ -116,7 +119,6 @@
 				491681952A104C0400E091F3 /* Setup */,
 				491681762A102CDE00E091F3 /* Assets.xcassets */,
 				491681782A102CDE00E091F3 /* Preview Content */,
-				49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */,
 			);
 			path = Soccerdle;
 			sourceTree = "<group>";
@@ -142,6 +144,7 @@
 		491681942A104BFC00E091F3 /* Home and Utils */ = {
 			isa = PBXGroup;
 			children = (
+				49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */,
 				499942A92A116CCD0036AAE9 /* Constants.swift */,
 				491681802A102D8B00E091F3 /* HomeView.swift */,
 				491681902A10371A00E091F3 /* CircleButton.swift */,
@@ -341,6 +344,7 @@
 				499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */,
 				49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */,
 				499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */,
+				49CB0EF82A97BF0900EAD9DC /* Store.swift in Sources */,
 				49AC7F872A96F2C000CD82D9 /* CustomAlert.swift in Sources */,
 				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
 				492D24FB2A4E2F5B003AA8DA /* GuessingLetters.swift in Sources */,

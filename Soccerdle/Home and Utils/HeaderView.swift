@@ -19,6 +19,7 @@ struct HeaderView: View {
                 NavigationLink{
                     GuessLevelsView()
                 }label: {
+                    
                     Image("arrow")
                         .resizable()
                         .foregroundColor(.white)
@@ -29,7 +30,7 @@ struct HeaderView: View {
             else if(title == "Guess Who "){
                 NavigationLink{
                     HomeView()
-                        
+
                 }label: {
                     Image("arrow")
                         .resizable()
@@ -37,7 +38,6 @@ struct HeaderView: View {
                         .frame(width: 40, height: 40, alignment: .leading)
                 }
                 .frame(alignment: .leading)
-                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                
             }else{
                 Button{
@@ -60,16 +60,19 @@ struct HeaderView: View {
             
             
             Spacer()
-            Text(String(coinsAmount))
-                .foregroundColor(.white)
-                .font(.custom("PT Sans Caption", size: 20))
-                
-            
-            Image("coins")
-                .resizable()
-                .frame(width: 30, height: 30, alignment: .trailing)
-                .foregroundColor(.white)
-
+           
+            NavigationLink{
+                Store()
+            }label: {
+                Text(String(coinsAmount))
+                    .foregroundColor(.white)
+                    .font(.custom("PT Sans Caption", size: 20))
+                    
+                Image("coins")
+                    .resizable()
+                    .frame(width: 30, height: 30, alignment: .trailing)
+                    .foregroundColor(.white)
+            }
                 
             
         }

@@ -63,7 +63,7 @@ struct CustomAlert: View {
                 
             }
         }
-        .offset(y: -30)
+        .offset(y: -60)
     }
 }
 
