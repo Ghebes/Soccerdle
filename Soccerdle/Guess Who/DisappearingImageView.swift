@@ -26,135 +26,71 @@ extension View {
 }
 
 
-struct DisappearingImageView: View {
-    @AppStorage("coins") var coinsAmount: Int = 100
-    @State var image: Image = LevelInformation().levels[0].imageName
-    @State var randomNumber: Int = .random(in: 0..<9)
-    @Binding var won: Bool
-    @Binding var imagesRemoved: Int
-    @State var hide: [Bool] = [false, false, false, false, false, false, false, false, false]
-    @Binding var hint: Bool
+//MARK:- Disappearing Image
+struct DisappearingImageView: View{
     
-    
-    func imageCompleted() -> Bool {
-        var completed = true
-        for square in hide {
-            if square == false{
-                completed = false
-            }
-        }
-        return completed
-    }
-    
-    func randomNumberGenerate() {
-        
-        if(imagesRemoved != 9){
-            randomNumber = .random(in: 0..<9)
-            while(hide[randomNumber] == true){
-                randomNumber = .random(in: 0..<9)
-                
-            }
-            
-            print(randomNumber)
-            hide[randomNumber].toggle()
-            
-            imagesRemoved += 1
-        }
-        
-    }
-    
+    @Binding var hide: [Bool]
     let timer = Timer.publish(every: 2, on: .main, in: .default).autoconnect()
+    @Binding var imagesRemoved: Int
+    @Binding var won: Bool
     
-    
-    var body: some View {
+    var body: some View{
         ZStack{
-            image
+            Image("gwmessi")
                 .resizable()
                 .frame(width: 351, height: 437)
                 .cornerRadius(20)
-                .onAppear{
-                    print(randomNumber)
-                }
             
-            VStack(spacing: 0.0){
-                HStack(spacing: 0.0){
+            VStack(spacing: 0){
+                HStack(spacing:0){
                     Rectangle()
                         .fill(hide[0] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                        .roundedCorners(20, corners: [.topLeft])
-                        .onAppear{
-                            randomNumberGenerate()
-                        }
-                    
+                        .cornerRadius(20, corners: .topLeft)
                     Rectangle()
                         .fill(hide[1] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                    
                     Rectangle()
                         .fill(hide[2] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                        .roundedCorners(20, corners: .topRight)
+                        .cornerRadius(20, corners: .topRight)
+                    
                 }
-                .frame(width: 351)
-                
-                HStack(spacing: 0.0){
+                HStack(spacing: 0){
                     Rectangle()
                         .fill(hide[3] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                    
-                    
                     Rectangle()
                         .fill(hide[4] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                    
                     Rectangle()
                         .fill(hide[5] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
                     
                 }
-                .frame(width: 351)
-                
-                
-                HStack(spacing: 0.0){
+                HStack(spacing: 0){
                     Rectangle()
                         .fill(hide[6] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                        .roundedCorners(20, corners: [.bottomLeft])
-                    
-                    
+                        .cornerRadius(20, corners: .bottomLeft)
                     Rectangle()
                         .fill(hide[7] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
                     
                     Rectangle()
                         .fill(hide[8] ? AnyShapeStyle(.clear) : AnyShapeStyle(.ultraThinMaterial))
-                        .frame(width: 117, height: 147)
-                        .roundedCorners(20, corners: .bottomRight)
+                        .cornerRadius(20, corners: .bottomRight)
                     
                 }
-                .frame(width: 351)
-                
-                
             }
-            .onReceive(timer){time in
-                if(won || hint){
-                    self.timer.upstream.connect().cancel()
-                }else{
-                    randomNumberGenerate()
+        }
+        .frame(height: 441)
+        .onReceive(timer){time in
+            //find a random number to generate and change the hide value
+            if(imagesRemoved < 9 && !won){
+                var randomNumber = Int.random(in: 0..<9)
+                while(hide[randomNumber]){
+                    randomNumber = Int.random(in: 0..<9)
                 }
-                
-                
+                hide[randomNumber] = true
+                imagesRemoved += 1
+            }else{
+                timer.upstream.connect().cancel()
             }
             
         }
-        
-        
-    }
-    
-}
-
-struct DisappearingImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        DisappearingImageView(won: .constant(false), imagesRemoved: .constant(0), hint: .constant(false))
+        .padding(.horizontal, 20)
     }
 }

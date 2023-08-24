@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-struct GuessingLetters: View {
+struct GuessingLetter: View {
     @Binding var guesses: [LetterType]
     var position: Int = 0
-    @Binding var incorrect: Bool
     var body: some View {
         VStack{
-            Text(guesses[position].character == "2" ? "" : String(guesses[position].character))
+            Text(guesses[position].character == " " ? "" : String(guesses[position].character))
                 .font(.custom("PT Sans Caption Bold", size: 24))
         }
         .frame(width: 34, height: 34)
-        .background(incorrect ? .red : guesses[position].character != "2" ? Color("questionMark") : .white)
+        .background(guesses[position].character != " " ? Color("questionMark") : .white)
         .overlay{
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 1)
@@ -27,11 +26,5 @@ struct GuessingLetters: View {
         
         
         
-    }
-}
-
-struct GuessingLetters_Previews: PreviewProvider {
-    static var previews: some View {
-        GuessingLetters(guesses: .constant([LetterType(character: Character("A")), LetterType(character: Character("B"))]), position: 0, incorrect: .constant(false))
     }
 }

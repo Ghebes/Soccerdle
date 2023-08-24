@@ -1,8 +1,8 @@
 //
-//  Letter.swift
+//  NormalLetter.swift
 //  Soccerdle
 //
-//  Created by Michael Ghebranious on 6/29/23.
+//  Created by Michael Ghebranious on 8/23/23.
 //
 
 import SwiftUI
@@ -42,3 +42,4 @@ struct NormalLetter: View {
         .disabled(clicked)
     }
 }
+

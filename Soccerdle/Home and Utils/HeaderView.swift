@@ -29,6 +29,7 @@ struct HeaderView: View {
             else if(title == "Guess Who "){
                 NavigationLink{
                     HomeView()
+                        
                 }label: {
                     Image("arrow")
                         .resizable()
@@ -36,6 +37,8 @@ struct HeaderView: View {
                         .frame(width: 40, height: 40, alignment: .leading)
                 }
                 .frame(alignment: .leading)
+                .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+               
             }else{
                 Button{
                     action()

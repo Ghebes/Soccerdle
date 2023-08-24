@@ -10,20 +10,20 @@ import SwiftUI
 struct GuessLevelsView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var allLevels = LevelInformation()
+    let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 5)
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 ScrollView(.vertical){
                     HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who ")
                     
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]){
-                        ForEach(allLevels.levels) {level in
+                    LazyVGrid(columns: columns, spacing: 30){
+                        ForEach(LevelInformation().levels){level in
                             LevelView(level: level)
                             
+                            
                         }
-                        .padding(EdgeInsets(top: 20, leading: 19, bottom: 0, trailing: 19))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                 }
@@ -31,8 +31,10 @@ struct GuessLevelsView: View {
                 .background(Color("background"))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationBarBackButtonHidden()
         }
         .navigationBarBackButtonHidden()
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 

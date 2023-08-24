@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct LevelView: View {
-    @State var level : Level
     @AppStorage("level") var currentLevel: Int = 1
-    @AppStorage("guessWho") var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
+    @AppStorage("coins") var coinsAmount: Int = 1000
+    @State var level: Level = LevelInformation().levels[0]
     
     var body: some View {
-        VStack{
+        
+        ZStack{
             NavigationLink{
-                    GuessWhoView(level: $level)
+                GuessWhoView(level: level, won: false)
             }label: {
                 Text(String(level.number))
-                    .foregroundColor(guessWho[level.number - 1] ? .white : .black)
                     .font(.custom("PT Sans Caption Bold", size: 28))
             }
+            
         }
+        .foregroundColor(.black)
         .frame(width: 55, height: 55)
-        .background(currentLevel == level.number ? .white: guessWho[level.number - 1] ? Color("correct") : Color("wordleBackground"))
+        .background(currentLevel == level.number ? .white : currentLevel > level.number ? Color("correct") : Color("wordleBackground"))
         .cornerRadius(15)
-        .disabled(currentLevel == level.number ? false : true)
-        .onAppear{
-            print(currentLevel)
-        }
+        .disabled(currentLevel != level.number)
+        
     }
 }
 

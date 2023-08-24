@@ -19,7 +19,6 @@
 		491681992A104D9700E091F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491681982A104D9700E091F3 /* Player.swift */; };
 		4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819A2A104F3D00E091F3 /* HeaderView.swift */; };
 		4916819D2A105CC400E091F3 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916819C2A105CC400E091F3 /* FooterView.swift */; };
-		492D24F72A4E290E003AA8DA /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24F62A4E290E003AA8DA /* Letter.swift */; };
 		492D24F92A4E2A5D003AA8DA /* Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24F82A4E2A5D003AA8DA /* Letters.swift */; };
 		492D24FB2A4E2F5B003AA8DA /* GuessingLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */; };
 		4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */; };
@@ -31,9 +30,12 @@
 		499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A72A116C8E0036AAE9 /* TraitView.swift */; };
 		499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942A92A116CCD0036AAE9 /* Constants.swift */; };
 		499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */; };
+		49AC7F852A96EEE000CD82D9 /* NormalLetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC7F842A96EEE000CD82D9 /* NormalLetter.swift */; };
+		49AC7F872A96F2C000CD82D9 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */; };
 		49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E81C1C2A44F54700F706D6 /* Timers.swift */; };
 		49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EED1A92A12A45D003D829D /* ResultsView.swift */; };
 		49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F265472A42104900F29E07 /* DisappearingImageView.swift */; };
+		E4C4BAEA73EF9F851F79ABBF /* Pods_Soccerdle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D513CF7A597184FD1A540C8D /* Pods_Soccerdle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +53,6 @@
 		491681982A104D9700E091F3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4916819A2A104F3D00E091F3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4916819C2A105CC400E091F3 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
-		492D24F62A4E290E003AA8DA /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		492D24F82A4E2A5D003AA8DA /* Letters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letters.swift; sourceTree = "<group>"; };
 		492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessingLetters.swift; sourceTree = "<group>"; };
 		4965E1BB2A40CD84004A7164 /* QuestionDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDisplayView.swift; sourceTree = "<group>"; };
@@ -63,9 +64,14 @@
 		499942A72A116C8E0036AAE9 /* TraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitView.swift; sourceTree = "<group>"; };
 		499942A92A116CCD0036AAE9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		499942AB2A118D910036AAE9 /* SearchingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingPlayerView.swift; sourceTree = "<group>"; };
+		49AC7F842A96EEE000CD82D9 /* NormalLetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalLetter.swift; sourceTree = "<group>"; };
+		49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		49E81C1C2A44F54700F706D6 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		49EED1A92A12A45D003D829D /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		49F265472A42104900F29E07 /* DisappearingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingImageView.swift; sourceTree = "<group>"; };
+		AB3C592EEFC495F9E4D479E3 /* Pods-Soccerdle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soccerdle.release.xcconfig"; path = "Target Support Files/Pods-Soccerdle/Pods-Soccerdle.release.xcconfig"; sourceTree = "<group>"; };
+		BD653FAF61E8794C571C37D9 /* Pods-Soccerdle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Soccerdle.debug.xcconfig"; path = "Target Support Files/Pods-Soccerdle/Pods-Soccerdle.debug.xcconfig"; sourceTree = "<group>"; };
+		D513CF7A597184FD1A540C8D /* Pods_Soccerdle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Soccerdle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C4BAEA73EF9F851F79ABBF /* Pods_Soccerdle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +91,8 @@
 			children = (
 				491681712A102CDD00E091F3 /* Soccerdle */,
 				491681702A102CDD00E091F3 /* Products */,
+				D369934681BDCDC2179AC97F /* Pods */,
+				BB4B8731B1B6284580541863 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +116,7 @@
 				491681952A104C0400E091F3 /* Setup */,
 				491681762A102CDE00E091F3 /* Assets.xcassets */,
 				491681782A102CDE00E091F3 /* Preview Content */,
+				49AC7F862A96F2C000CD82D9 /* CustomAlert.swift */,
 			);
 			path = Soccerdle;
 			sourceTree = "<group>";
@@ -187,11 +197,28 @@
 				4965E1C42A410603004A7164 /* Levels.swift */,
 				4965E1C72A41101A004A7164 /* LevelView.swift */,
 				49F265472A42104900F29E07 /* DisappearingImageView.swift */,
-				492D24F62A4E290E003AA8DA /* Letter.swift */,
 				492D24F82A4E2A5D003AA8DA /* Letters.swift */,
 				492D24FA2A4E2F5B003AA8DA /* GuessingLetters.swift */,
+				49AC7F842A96EEE000CD82D9 /* NormalLetter.swift */,
 			);
 			path = "Guess Who";
+			sourceTree = "<group>";
+		};
+		BB4B8731B1B6284580541863 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D513CF7A597184FD1A540C8D /* Pods_Soccerdle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D369934681BDCDC2179AC97F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD653FAF61E8794C571C37D9 /* Pods-Soccerdle.debug.xcconfig */,
+				AB3C592EEFC495F9E4D479E3 /* Pods-Soccerdle.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4916817D2A102CDE00E091F3 /* Build configuration list for PBXNativeTarget "Soccerdle" */;
 			buildPhases = (
+				DD035A7D3513867484728B98 /* [CP] Check Pods Manifest.lock */,
 				4916816B2A102CDD00E091F3 /* Sources */,
 				4916816C2A102CDD00E091F3 /* Frameworks */,
 				4916816D2A102CDD00E091F3 /* Resources */,
+				102B92538D280593DF4317C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,6 +291,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		102B92538D280593DF4317C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Soccerdle/Pods-Soccerdle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Soccerdle/Pods-Soccerdle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Soccerdle/Pods-Soccerdle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD035A7D3513867484728B98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Soccerdle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4916816B2A102CDD00E091F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,18 +341,19 @@
 				499942A62A1169980036AAE9 /* PlayerSoccerdleView.swift in Sources */,
 				49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */,
 				499942A82A116C8E0036AAE9 /* TraitView.swift in Sources */,
+				49AC7F872A96F2C000CD82D9 /* CustomAlert.swift in Sources */,
 				491681912A10371A00E091F3 /* CircleButton.swift in Sources */,
 				492D24FB2A4E2F5B003AA8DA /* GuessingLetters.swift in Sources */,
 				4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */,
 				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
 				499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */,
-				492D24F72A4E290E003AA8DA /* Letter.swift in Sources */,
 				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
 				499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */,
 				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
 				491681812A102D8B00E091F3 /* HomeView.swift in Sources */,
 				492D24F92A4E2A5D003AA8DA /* Letters.swift in Sources */,
 				4965E1BC2A40CD84004A7164 /* QuestionDisplayView.swift in Sources */,
+				49AC7F852A96EEE000CD82D9 /* NormalLetter.swift in Sources */,
 				4965E1C82A41101A004A7164 /* LevelView.swift in Sources */,
 				4965E1C52A410603004A7164 /* Levels.swift in Sources */,
 				4965E1C32A410343004A7164 /* GuessLevelsView.swift in Sources */,
@@ -411,6 +483,7 @@
 		};
 		4916817E2A102CDE00E091F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD653FAF61E8794C571C37D9 /* Pods-Soccerdle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -441,6 +514,7 @@
 		};
 		4916817F2A102CDE00E091F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB3C592EEFC495F9E4D479E3 /* Pods-Soccerdle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
