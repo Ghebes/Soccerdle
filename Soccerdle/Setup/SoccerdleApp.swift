@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import GoogleMobileAds
 @main
 struct SoccerdleApp: App {
     @AppStorage("coins", store: .standard) var coins: Int = 100
@@ -17,6 +17,10 @@ struct SoccerdleApp: App {
         WindowGroup {
             HomeView()
                 .preferredColorScheme(.light)
+                .onAppear{
+                    GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+                }
             
         }
     }

@@ -35,6 +35,7 @@
 		49CB0EF82A97BF0900EAD9DC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0EF72A97BF0900EAD9DC /* Store.swift */; };
 		49CB0EFB2A9812F400EAD9DC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0EFA2A9812F400EAD9DC /* ViewModel.swift */; };
 		49CB0F002A9817ED00EAD9DC /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49CB0EFF2A9817ED00EAD9DC /* Property List.plist */; };
+		49CB0F032A9960B600EAD9DC /* AdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0F022A9960B600EAD9DC /* AdCoordinator.swift */; };
 		49E81C1D2A44F54700F706D6 /* Timers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E81C1C2A44F54700F706D6 /* Timers.swift */; };
 		49EED1AA2A12A45D003D829D /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EED1A92A12A45D003D829D /* ResultsView.swift */; };
 		49F265482A42104900F29E07 /* DisappearingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F265472A42104900F29E07 /* DisappearingImageView.swift */; };
@@ -73,6 +74,7 @@
 		49CB0EFA2A9812F400EAD9DC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		49CB0EFE2A9816D300EAD9DC /* Product.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Product.storekit; path = ../../Product.storekit; sourceTree = "<group>"; };
 		49CB0EFF2A9817ED00EAD9DC /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		49CB0F022A9960B600EAD9DC /* AdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCoordinator.swift; sourceTree = "<group>"; };
 		49E81C1C2A44F54700F706D6 /* Timers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timers.swift; sourceTree = "<group>"; };
 		49EED1A92A12A45D003D829D /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		49F265472A42104900F29E07 /* DisappearingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisappearingImageView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		491681712A102CDD00E091F3 /* Soccerdle */ = {
 			isa = PBXGroup;
 			children = (
+				49CB0F012A9960A600EAD9DC /* Ads */,
 				49CB0EF92A9811F200EAD9DC /* Store */,
 				4965E1BF2A41031B004A7164 /* Guess Who */,
 				4965E1B82A40CBD9004A7164 /* Knowledge */,
@@ -221,6 +224,14 @@
 				49CB0EFA2A9812F400EAD9DC /* ViewModel.swift */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		49CB0F012A9960A600EAD9DC /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				49CB0F022A9960B600EAD9DC /* AdCoordinator.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		BB4B8731B1B6284580541863 /* Frameworks */ = {
@@ -369,6 +380,7 @@
 				4965E1C12A41032D004A7164 /* GuessWhoView.swift in Sources */,
 				4916819D2A105CC400E091F3 /* FooterView.swift in Sources */,
 				499942AC2A118D910036AAE9 /* SearchingPlayerView.swift in Sources */,
+				49CB0F032A9960B600EAD9DC /* AdCoordinator.swift in Sources */,
 				4916819B2A104F3D00E091F3 /* HeaderView.swift in Sources */,
 				499942AA2A116CCD0036AAE9 /* Constants.swift in Sources */,
 				491681932A104BF000E091F3 /* SoccerdleView.swift in Sources */,
@@ -516,11 +528,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Soccerdle/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,11 +561,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Soccerdle/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

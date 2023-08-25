@@ -21,6 +21,9 @@ struct RoundedCorner: Shape {
 }
 
 struct GuessWhoView: View {
+    //private let adViewControllerRepresentable = AdViewControllerRepresentable()
+    //private let adCoordinator = AdCoordinator()
+    
     @Environment(\.dismiss) var dismiss: DismissAction
     @State var level: Level = LevelInformation().levels[0]
     @AppStorage("level") var currentLevel: Int = 1
@@ -405,6 +408,13 @@ struct GuessWhoView: View {
                 }
                 .padding(.top, 15)
                 
+                Button{
+                   //adCoordinator.loadAd()
+                    
+                   //adCoordinator.presentAd(from: adViewControllerRepresentable.viewController)
+                }label: {
+                    Text("Ad test")
+                }
                 Spacer()
                 
                 FooterView(hintScreen: $showHint, revealAnswerAlert: $showAnswer, showInstructions: $showInstructions)
@@ -418,6 +428,9 @@ struct GuessWhoView: View {
             
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color("background"))
+            .background {
+               //adViewControllerRepresentable.frame(width: .zero, height: .zero)
+            }
             
             hintScreen
             revealAnswerScreen
