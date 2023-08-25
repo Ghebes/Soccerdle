@@ -86,7 +86,7 @@ struct GuessWhoView: View {
     }
     private var hintScreen: some View {
         VStack{
-            Text("Are you sure you want to spend 50 coins for a hint?")
+            Text("Are you sure you want to spend 25 coins for a hint?")
                 .foregroundColor(.black)
                 .font(.custom("PT Sans Caption Bold", size: 25))
                 .padding(.horizontal, 10)
@@ -95,9 +95,9 @@ struct GuessWhoView: View {
             HStack{
                 Button{
                     
-                    if(coinsAmount >= 50){
+                    if(coinsAmount >= 25){
                         
-                        coinsAmount -= 50
+                        coinsAmount -= 25
 
                         //get a random letter that has not been completed yet
                         
@@ -158,7 +158,7 @@ struct GuessWhoView: View {
     
     private var revealAnswerScreen: some View {
         VStack{
-            Text("Are you sure you want to spend 100 coins to reveal the answer?")
+            Text("Are you sure you want to spend 50 coins to reveal the answer?")
                 .foregroundColor(.black)
                 .font(.custom("PT Sans Caption Bold", size: 25))
                 .padding(.horizontal, 10)
@@ -166,8 +166,8 @@ struct GuessWhoView: View {
             
             HStack(spacing: 10){
                 Button{
-                    if(coinsAmount >= 100){
-                        coinsAmount -= 100
+                    if(coinsAmount >= 50){
+                        coinsAmount -= 50
                         
                         guesses = level.letters
                         
