@@ -21,15 +21,14 @@ struct RoundedCorner: Shape {
 }
 
 struct GuessWhoView: View {
-    //private let adViewControllerRepresentable = AdViewControllerRepresentable()
-    //private let adCoordinator = AdCoordinator()
-    
+
+    @ObservedObject var navigationValues: NavigationValues
     @Environment(\.dismiss) var dismiss: DismissAction
     @State var level: Level = LevelInformation().levels[0]
     @AppStorage("level") var currentLevel: Int = 1
     @AppStorage("coins") var coinsAmount: Int = 1000
     @State var nextLevel: Level = LevelInformation().levels[0]
-    
+    @State var pressed: Bool = false
     @State var addedCoins: Int = 0
     
     //Guessing Letter Variables
@@ -356,90 +355,86 @@ struct GuessWhoView: View {
     
     var body: some View {
         ZStack {
-            VStack{
-                
-                //MARK: HeaderView
-                HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "Guess Who")
-                
-                
-                DisappearingImageView(level: $level, hide: $hide, imagesRemoved: $imagesRemoved, won: $won, showAnswer: $showAnswer)
-                
-                //GuessingLetters
-                HStack(spacing: 10){
-                    ForEach(level.letters.indices){ index in
-                        GuessingLetter(guesses: $guesses, position: index)
-                    }
-                }
-                .padding(.top, 10)
-                
-                HStack(spacing: 10){
-                    LazyVGrid(columns: columns){
-                        ForEach(allLetters.indices) { index in
-                            NormalLetter(letter: allLetters[index], clicked: $clickedArray[index], guessesFilled: guessesFilled(), guesses: $guesses)
+            if(!pressed){
+                VStack{
+                    
+                    //MARK: HeaderView
+                    HeaderView(coinsAmount: coinsAmount, action: dismiss, navigationValues: navigationValues, title: "Guess Who")
+                    
+                    
+                    DisappearingImageView(level: $level, hide: $hide, imagesRemoved: $imagesRemoved, won: $won, showAnswer: $showAnswer)
+                    
+                    //GuessingLetters
+                    HStack(spacing: 10){
+                        ForEach(level.letters.indices){ index in
+                            GuessingLetter(guesses: $guesses, position: index)
                         }
                     }
-                    .frame(width: 330)
+                    .padding(.top, 10)
                     
-                    VStack{
-                        Image(systemName: "delete.left")
-                            .resizable()
-                            .frame(width: 20, height: 25)
-                    }
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 80)
-                    .background(Color("wrong"))
-                    .cornerRadius(10)
-                    .onTapGesture {
-                        if(amountFilled() != 0){
-                            let letterRemoved = guesses.last(where: {$0.character != " "})!
-                            
-                            let guessIndex = guesses.firstIndex(where: {$0.id == letterRemoved.id})!
-                            
-                            guesses[guessIndex].character = " "
-                            
-                            guard let letterIndex = allLetters.firstIndex(where: {$0.id == letterRemoved.id}) else {
-                                print("ERROR")
-                                return
+                    HStack(spacing: 10){
+                        LazyVGrid(columns: columns){
+                            ForEach(allLetters.indices) { index in
+                                NormalLetter(letter: allLetters[index], clicked: $clickedArray[index], guessesFilled: guessesFilled(), guesses: $guesses)
                             }
-                            
-                            clickedArray[letterIndex] = false
+                        }
+                        .frame(width: 330)
+                        
+                        VStack{
+                            Image(systemName: "delete.left")
+                                .resizable()
+                                .frame(width: 20, height: 25)
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 80)
+                        .background(Color("wrong"))
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            if(amountFilled() != 0){
+                                let letterRemoved = guesses.last(where: {$0.character != " "})!
+                                
+                                let guessIndex = guesses.firstIndex(where: {$0.id == letterRemoved.id})!
+                                
+                                guesses[guessIndex].character = " "
+                                
+                                guard let letterIndex = allLetters.firstIndex(where: {$0.id == letterRemoved.id}) else {
+                                    print("ERROR")
+                                    return
+                                }
+                                
+                                clickedArray[letterIndex] = false
+                            }
                         }
                     }
-                }
-                .padding(.top, 15)
-                
-                Button{
-                   //adCoordinator.loadAd()
+                    .padding(.top, 15)
                     
-                   //adCoordinator.presentAd(from: adViewControllerRepresentable.viewController)
-                }label: {
-                    Text("Ad test")
+                    Spacer()
+                    
+                    FooterView(hintScreen: $showHint, revealAnswerAlert: $showAnswer, showInstructions: $showInstructions)
                 }
-                Spacer()
+                .onChange(of: amountFilled()){newValue in
+                    
+                    if(newValue == level.letters.count){
+                        checkWon()
+                    }
+                }
                 
-                FooterView(hintScreen: $showHint, revealAnswerAlert: $showAnswer, showInstructions: $showInstructions)
-            }
-            .onChange(of: amountFilled()){newValue in
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
 
-                if(newValue == level.letters.count){
-                    checkWon()
+                
+                
+                hintScreen
+                revealAnswerScreen
+                instructions
+                if(won){
+                    CustomAlert(shown: $won, addedCoins: $addedCoins, pressed: $pressed)
                 }
-            }
-            
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(Color("background"))
-            .background {
-               //adViewControllerRepresentable.frame(width: .zero, height: .zero)
-            }
-            
-            hintScreen
-            revealAnswerScreen
-            instructions
-            if(won){
-                CustomAlert(shown: $won, addedCoins: $addedCoins)
+            }else{
+                GuessWhoView(navigationValues: navigationValues, level: nextLevel, won: false)
             }
         }
         .navigationBarBackButtonHidden()
+        
         
 
         

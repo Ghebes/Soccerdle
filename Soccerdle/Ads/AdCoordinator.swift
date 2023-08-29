@@ -2,34 +2,61 @@
 //  AdCoordinator.swift
 //  Soccerdle
 //
-//  Created by Michael Ghebranious on 8/25/23.
+//  Created by Michael Ghebranious on 8/28/23.
 //
 
 import Foundation
-import GoogleMobileAds
 import SwiftUI
+import GoogleMobileAds
 
-
-class AdCoordinator: NSObject {
+class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     private var ad: GADInterstitialAd?
     
     func loadAd() {
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3901710931145358~6815851131", request: GADRequest()){ad, error in
+        GADInterstitialAd.load(
+            withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: GADRequest()
+        ) { [self] ad, error in
             if let error = error {
                 return print("Failed to load ad with error: \(error.localizedDescription)")
             }
             
             self.ad = ad
-            
         }
     }
     
-    func presentAd(from viewController: UIViewController){
+    func presentAd(from viewController: UIViewController) {
         guard let fullScreenAd = ad else {
             return print("Ad wasn't ready")
         }
         
         fullScreenAd.present(fromRootViewController: viewController)
+    }
+    
+    // MARK: - GADFullScreenContentDelegate methods
+    
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        print("\(#function) called")
+    }
+    
+    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        print("\(#function) called")
+    }
+    
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("\(#function) called")
+    }
+    
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("\(#function) called")
+    }
+    
+    
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("\(#function) called")
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("\(#function) called")
     }
 }
 
@@ -40,8 +67,7 @@ struct AdViewControllerRepresentable: UIViewControllerRepresentable {
         return viewController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context){
-        //No implementation needed
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        // No implementation needed. Nothing to update.
     }
 }
-

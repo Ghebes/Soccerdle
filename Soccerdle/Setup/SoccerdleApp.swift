@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
-import GoogleMobileAds
+
 @main
 struct SoccerdleApp: App {
     @AppStorage("coins", store: .standard) var coins: Int = 100
     @AppStorage("level", store: .standard) var currentLevel: Int = 1
     @AppStorage("guessWho", store: .standard) var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
     
+    
     var body: some Scene {
+        
+        
         WindowGroup {
-            HomeView()
+            
+            AllNavigation()
                 .preferredColorScheme(.light)
-                .onAppear{
-                    GADMobileAds.sharedInstance().start(completionHandler: nil)
-
-                }
             
         }
     }

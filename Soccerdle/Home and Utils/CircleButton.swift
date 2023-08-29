@@ -12,22 +12,27 @@ struct CircleButton: View {
     @State var image: Image = Image("wordle")
     @State var question: Bool = true
     @State var title: String = "Unlimited Soccerdle"
-    
-    @ViewBuilder
-    var targetView: some View {
-        switch (title){
-            case "Unlimited Soccerdle":
-                 SoccerdleView()
-            case "Guess Who":
-                 GuessLevelsView()
-            default:
-                 SoccerdleView()
-        }
-    }
+    @ObservedObject var navigationValues: NavigationValues
     var body: some View {
         
-        NavigationLink{
-            targetView
+        Button{
+            switch(title){
+            case "Unlimited Soccerdle":
+                navigationValues.showAllLevels = false
+                navigationValues.showHome = false
+                navigationValues.showStore = false
+                navigationValues.showSoccerdle = true
+                navigationValues.showGuessWho = false
+            
+            case "Guess Who":
+                navigationValues.showAllLevels = true
+                navigationValues.showHome = false
+                navigationValues.showStore = false
+                navigationValues.showSoccerdle = false
+                navigationValues.showGuessWho = false
+            default:
+                print("WHAT")
+            }
         }label: {
             
             VStack {
@@ -70,8 +75,3 @@ struct CircleButton: View {
     }
 }
 
-struct CircleButton_Previews: PreviewProvider {
-    static var previews: some View {
-        CircleButton()
-    }
-}

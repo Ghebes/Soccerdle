@@ -94,9 +94,10 @@ struct Store: View {
     @Environment(\.dismiss) var dismiss: DismissAction
     @AppStorage("coins") var coinsAmount: Int = 100
     @StateObject var storeKit = StoreKitManager()
+    @ObservedObject var navigationValues: NavigationValues
     var body: some View {
         VStack{
-            HeaderView(action: dismiss, title: "Store")
+            HeaderView(action: dismiss, navigationValues: navigationValues, title: "Store")
             
             ForEach(storeKit.storeProducts){product in
                 VStack(spacing: 20){
@@ -108,11 +109,5 @@ struct Store: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
         .navigationBarBackButtonHidden()
-    }
-}
-
-struct Store_Previews: PreviewProvider {
-    static var previews: some View {
-        Store()
     }
 }

@@ -39,16 +39,20 @@ func requestPermission() {
 }
 struct HomeView: View {
     @AppStorage("coins") var coinsAmount: Int = 100
-    
+    private let adCoordinator = AdCoordinator()
+    private let adViewControllerRepresentable = AdViewControllerRepresentable()
     var SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+    @ObservedObject var navigationValues: NavigationValues
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack(spacing: 10.0){
                 
                 HStack(spacing: 8.0){
                     Spacer()
-                    NavigationLink{
-                        Store()
+                    Button{
+                        navigationValues.showHome = false
+                        navigationValues.showStore = true
                     }label: {
                         Text(String(coinsAmount))
                             .foregroundColor(.white)
@@ -68,10 +72,23 @@ struct HomeView: View {
                     .font(.custom("PT Sans Caption Bold", size: 50))
                 
                 VStack(spacing: 80){
-                    CircleButton(question: false)
+                    CircleButton(question: false, navigationValues: navigationValues)
                     
                     
-                    CircleButton(image: Image("guess"), question: true, title: "Guess Who")
+                    CircleButton(image: Image("guess"), question: true, title: "Guess Who", navigationValues: navigationValues)
+                    
+                    Button{
+                        adCoordinator.loadAd()
+                    }label: {
+                        Text("Hello ther")
+                    }
+                    
+                    Button{
+                        adCoordinator.presentAd(from: adViewControllerRepresentable.viewController)
+                        
+                    }label: {
+                        Text("Checking")
+                    }
                 }
                 .frame(height: SCREEN_HEIGHT * 0.7, alignment: .center)
                 
@@ -84,13 +101,13 @@ struct HomeView: View {
         .onAppear{
             requestPermission()
         }
+        .background{
+            adViewControllerRepresentable
+                .frame(width: 0, height: 0)
+        }
+        
         
         
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}

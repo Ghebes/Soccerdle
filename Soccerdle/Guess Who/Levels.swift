@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-struct Level: Identifiable {
+struct Level: Identifiable, Hashable {
     var id = UUID()
     let number: Int
     let playerName: String

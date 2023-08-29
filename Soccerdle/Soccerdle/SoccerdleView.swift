@@ -21,7 +21,7 @@ struct SoccerdleView: View {
     @State var hintScreen: Bool = false
     @State var hintText: String = ""
     @State var poorAlert: Bool = false
-    
+    @ObservedObject var navigationValues: NavigationValues
     var showHint: Bool {
         return hintText != ""
     }
@@ -42,7 +42,7 @@ struct SoccerdleView: View {
         NavigationView {
             ZStack {
                 VStack{
-                    HeaderView(action: dismiss)
+                    HeaderView(action: dismiss, navigationValues: navigationValues)
                         .frame(alignment: .top)
                     
                     //manual search field
@@ -505,8 +505,3 @@ struct SoccerdleView: View {
     }
 }
 
-struct SoccerdleView_Previews: PreviewProvider {
-    static var previews: some View {
-        SoccerdleView()
-    }
-}

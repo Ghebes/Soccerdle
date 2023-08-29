@@ -10,10 +10,10 @@ import SwiftUI
 struct QuestionDisplayView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("coins") var coinsAmount: Int = 100
-    
+    @ObservedObject var navigationValues: NavigationValues
     var body: some View {
         VStack{
-            HeaderView(coinsAmount: coinsAmount, action: dismiss, title: "")
+            HeaderView(coinsAmount: coinsAmount, action: dismiss, navigationValues: navigationValues, title: "")
             
             Timers(secondsLeft: 5)
             
@@ -22,11 +22,5 @@ struct QuestionDisplayView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color("background"))
-    }
-}
-
-struct QuestionDisplayView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionDisplayView()
     }
 }
