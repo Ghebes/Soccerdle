@@ -11,6 +11,9 @@ struct SoccerdleView: View {
     @AppStorage("coins") var coinsAmount = 0
     @FocusState private var searchingFocused: Bool
     
+    @EnvironmentObject var adCounter: AdCounter
+    @State var adCoordinator = AdCoordinator()
+    @State var adViewControllerRepresentative = AdViewControllerRepresentable()
     @State var searchQuery = ""
     @State var searching: Bool = false
     @State var guesses = 0
@@ -155,12 +158,21 @@ struct SoccerdleView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        
+        .background{
+            adViewControllerRepresentative
+                .frame(width: .zero, height: .zero)
+        }
         
         
     }
     
     func playAgain() {
+        adCounter.counter += 1
+        if(adCounter.counter >= 2){
+            adCounter.counter = 0
+            adCoordinator.presentAd(from: adViewControllerRepresentative.viewController)
+            adCoordinator = AdCoordinator()
+        }
         withAnimation(.spring()){
             won = false
             guesses = 0
