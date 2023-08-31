@@ -9,10 +9,14 @@ import SwiftUI
 
 struct CustomAlert: View {
     @Binding var shown: Bool
+    var adCoordinator : AdCoordinator
+    var adViewControllerRepresentable : AdViewControllerRepresentable
     @State var nextLevel: Level = LevelInformation().levels.first!
     @Binding var addedCoins: Int
     @AppStorage("level") var currentLevel: Int = 1
     @Binding var pressed: Bool
+    @EnvironmentObject var adCounter: AdCounter
+    
     var body: some View {
             VStack(spacing: 5){
                 HStack(alignment: .center){
@@ -47,6 +51,7 @@ struct CustomAlert: View {
                 
                 Button{
                     pressed = true
+                    
                 }label: {
                     Text("Next Level")
                         .font(.custom("PT Sans Caption", size: 20))

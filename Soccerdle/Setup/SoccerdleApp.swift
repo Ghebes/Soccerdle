@@ -13,6 +13,7 @@ struct SoccerdleApp: App {
     @AppStorage("level", store: .standard) var currentLevel: Int = 1
     @AppStorage("guessWho", store: .standard) var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
     
+    let adCounter = AdCounter()
     
     var body: some Scene {
         
@@ -21,6 +22,7 @@ struct SoccerdleApp: App {
             
             AllNavigation()
                 .preferredColorScheme(.light)
+                .environmentObject(adCounter)
             
         }
     }

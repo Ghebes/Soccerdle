@@ -9,6 +9,7 @@ extension View {
     }
 }
 
+
 struct RoundedCorner: Shape {
 
     var radius: CGFloat = .infinity
@@ -21,7 +22,10 @@ struct RoundedCorner: Shape {
 }
 
 struct GuessWhoView: View {
-
+    let adCoordinator = AdCoordinator()
+    let adViewControllerRepresentable = AdViewControllerRepresentable()
+    
+    @EnvironmentObject var adCounter: AdCounter
     @ObservedObject var navigationValues: NavigationValues
     @Environment(\.dismiss) var dismiss: DismissAction
     @State var level: Level = LevelInformation().levels[0]
@@ -32,8 +36,9 @@ struct GuessWhoView: View {
     @State var addedCoins: Int = 0
     
     //Guessing Letter Variables
-    @State var guesses: [LetterType] = Array(repeating: LetterType(character: Character(" ")), count: 5)
+    @State var guesses: [LetterType] = []
     
+
     //Letter Bank Variables
     @State var allLetters: [LetterType] = AllCharacters().allCharacters
     let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 7)
@@ -281,7 +286,7 @@ struct GuessWhoView: View {
                 Image(systemName: "xmark")
                     .resizable()
                     .frame(width: 17, height: 20, alignment: .trailing)
-                    .bold()
+
                     .padding(.top, 5)
                     .padding(.trailing, 30)
                     .onTapGesture {
@@ -313,11 +318,11 @@ struct GuessWhoView: View {
     func guessesFilled() -> Bool {
         for guess in guesses {
             if(guess.character == " "){
-                
+
                 return false
             }
         }
-        
+
         return true
     }
     
@@ -326,7 +331,9 @@ struct GuessWhoView: View {
         //check the values of the guess.character
         for index in guesses.indices{
             if(guesses[index].character != level.letters[index].character){
-                incorrect = true
+                withAnimation(.default.repeatCount(5).speed(6)){
+                    incorrect.toggle()
+                }
                 won = false
   
                 return
@@ -339,6 +346,17 @@ struct GuessWhoView: View {
         calculateCoins()
         incorrect = false
         currentLevel += 1
+        if(currentLevel - 1 >= LevelInformation().levels.count){
+            navigationValues.showAllLevels = true
+            navigationValues.showGuessWho = false
+        }
+        
+        adCounter.counter += 1
+        if(adCounter.counter >= 2){
+            adCounter.counter = 0
+            adCoordinator.presentAd(from: adViewControllerRepresentable.viewController)
+            print("presented")
+        }
     }
     
     func amountFilled() -> Int {
@@ -356,10 +374,14 @@ struct GuessWhoView: View {
     var body: some View {
         ZStack {
             if(!pressed){
-                VStack{
+                VStack(spacing: 2){
                     
                     //MARK: HeaderView
                     HeaderView(coinsAmount: coinsAmount, action: dismiss, navigationValues: navigationValues, title: "Guess Who")
+                    
+                    Text("Level: \(String(level.number))")
+                        .foregroundColor(.white)
+                        .font(.custom("PT Sans Caption Bold", size: 24))
                     
                     
                     DisappearingImageView(level: $level, hide: $hide, imagesRemoved: $imagesRemoved, won: $won, showAnswer: $showAnswer)
@@ -367,7 +389,7 @@ struct GuessWhoView: View {
                     //GuessingLetters
                     HStack(spacing: 10){
                         ForEach(level.letters.indices){ index in
-                            GuessingLetter(guesses: $guesses, position: index)
+                            GuessingLetter(guesses: $guesses, position: index, incorrect: $incorrect)
                         }
                     }
                     .padding(.top, 10)
@@ -375,7 +397,7 @@ struct GuessWhoView: View {
                     HStack(spacing: 10){
                         LazyVGrid(columns: columns){
                             ForEach(allLetters.indices) { index in
-                                NormalLetter(letter: allLetters[index], clicked: $clickedArray[index], guessesFilled: guessesFilled(), guesses: $guesses)
+                                NormalLetter(letter: allLetters[index], clicked: $clickedArray[index], guesses: $guesses)
                             }
                         }
                         .frame(width: 330)
@@ -416,25 +438,34 @@ struct GuessWhoView: View {
                     
                     if(newValue == level.letters.count){
                         checkWon()
+                    }else{
+                        incorrect = false
                     }
                 }
                 
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-
+                
                 
                 
                 hintScreen
                 revealAnswerScreen
                 instructions
                 if(won){
-                    CustomAlert(shown: $won, addedCoins: $addedCoins, pressed: $pressed)
+                    CustomAlert(shown: $won, adCoordinator: adCoordinator, adViewControllerRepresentable: adViewControllerRepresentable, addedCoins: $addedCoins, pressed: $pressed)
                 }
             }else{
-                GuessWhoView(navigationValues: navigationValues, level: nextLevel, won: false)
+                if(currentLevel - 1 < LevelInformation().levels.count){
+                    GuessWhoView(navigationValues: navigationValues, level: LevelInformation().levels[currentLevel - 1], guesses: Array(repeating: LetterType(character: " "), count: LevelInformation().levels[currentLevel - 1].letters.count), won: false)
+                }else{
+                    GuessLevelsView(navigationValues: navigationValues)
+                }
             }
         }
         .navigationBarBackButtonHidden()
-        
+        .background{
+            adViewControllerRepresentable
+                .frame(width: .zero, height: .zero)
+        }
         
 
         

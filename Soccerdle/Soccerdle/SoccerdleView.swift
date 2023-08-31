@@ -458,7 +458,6 @@ struct SoccerdleView: View {
                     Image(systemName: "xmark")
                         .resizable()
                         .frame(width: 17, height: 20, alignment: .trailing)
-                        .bold()
                         .padding(.top, 5)
                         .padding(.trailing, 30)
                         .onTapGesture {

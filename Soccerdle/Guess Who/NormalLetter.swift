@@ -12,13 +12,23 @@ struct LetterType: Identifiable {
     var character: Character
 }
 
+
+
 struct NormalLetter: View {
     @State var letter: LetterType = LetterType(character: Character((" ")))
     @Binding var clicked: Bool
-    @State var guessesFilled: Bool = false
     @Binding var guesses: [LetterType]
     
+    func guessesFilled() -> Bool {
+        for guess in guesses {
+            if(guess.character == " "){
 
+                return false
+            }
+        }
+
+        return true
+    }
     var body: some View {
         VStack{
             Text(String(letter.character))
@@ -28,7 +38,7 @@ struct NormalLetter: View {
         .background(clicked ? Color("wordleBackground").opacity(0.6) : Color("questionMark"))
         .cornerRadius(5)
         .onTapGesture {
-            if(!guessesFilled){
+            if(!guessesFilled()){
                 clicked = true
                 
                 if let i = guesses.firstIndex(where: {$0.character == Character(" ")}){

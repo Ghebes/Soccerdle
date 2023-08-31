@@ -9,8 +9,18 @@ import Foundation
 import SwiftUI
 import GoogleMobileAds
 
+
+class AdCounter: ObservableObject {
+    @Published var counter: Int = 0
+}
+
 class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     private var ad: GADInterstitialAd?
+    
+    override init(){
+        super.init()
+        loadAd()
+    }
     
     func loadAd() {
         GADInterstitialAd.load(
@@ -21,6 +31,7 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
             }
             
             self.ad = ad
+            self.ad?.fullScreenContentDelegate = self
         }
     }
     
@@ -44,6 +55,7 @@ class AdCoordinator: NSObject, GADFullScreenContentDelegate {
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("\(#function) called")
+        print(error)
     }
     
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {

@@ -33,21 +33,20 @@ struct SearchingPlayerView: View {
             
             VStack{
                 HStack{
-                    Text(player.generalPosition.rawValue)
-                        .font(.custom("PT Sans Caption", size: 20))
-                        .foregroundColor(generalColor)
-                    Spacer()
+                    
                     Text(player.lastName)
                         .font(.custom("PT Sans Caption Bold", size: 20))
-                    
-                    Spacer()
-                    Text(player.specificPosition.rawValue)
-                        .font(.custom("PT Sans Caption", size: 20))
+                        .frame(width: 220, alignment: .center)
+
                 }
                 .padding(.trailing, 10)
                 
                 Spacer()
-                HStack{
+                HStack(){
+                    Text(player.generalPosition.rawValue)
+                        .font(.custom("PT Sans Caption", size: 20))
+                        .foregroundColor(generalColor)
+                    Spacer()
                     Image(player.nation.rawValue)
                         .resizable()
                         .frame(width: 40, height: 30)
@@ -55,15 +54,9 @@ struct SearchingPlayerView: View {
                     Image(player.league.rawValue)
                         .resizable()
                         .frame(width: 38, height: 45)
-                    Spacer()
-                    Image(player.club.rawValue)
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                    Spacer()
-                    Text(String(player.age))
-                        .font(.custom("PT Sans Caption", size: 20))
                 }
                 .padding(.trailing, 10)
+                .frame(maxWidth: 220, alignment: .center)
             }
             .padding(.vertical, 8)
         }

@@ -22,7 +22,7 @@ struct AllNavigation: View {
         VStack{
             if(navigation.showHome){
                 HomeView(navigationValues: navigation)
-                    .transition(.asymmetric(insertion: .move(edge: .leading) , removal: .move(edge: .trailing)))
+                    .transition(.asymmetric(insertion: .move(edge: .leading) , removal: .move(edge: .trailing)).combined(with: .opacity))
                     .animation(.default)
             }else if(navigation.showStore){
                 Store(navigationValues: navigation)
@@ -30,12 +30,12 @@ struct AllNavigation: View {
                     .animation(.default)
             }else if(navigation.showAllLevels){
                 GuessLevelsView(navigationValues: navigation)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing) , removal: .move(edge: .leading)))
+                    .transition(.asymmetric(insertion: .move(edge: .trailing) , removal: .move(edge: .trailing).combined(with: .opacity)))
                     .animation(.default)
             }else if (navigation.showGuessWho){
                 if(currentLevel - 1 < LevelInformation().levels.count){
-                    GuessWhoView(navigationValues: navigation, level: LevelInformation().levels[currentLevel - 1], won: false)
-                        .transition(.asymmetric(insertion: .scale , removal: .opacity))
+                    GuessWhoView(navigationValues: navigation, level: LevelInformation().levels[currentLevel - 1], guesses: Array(repeating: LetterType(character: " "), count: LevelInformation().levels[currentLevel - 1].letters.count), won: false)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing) , removal: .opacity))
                         .animation(.default)
                 }else{
                     GuessLevelsView(navigationValues: navigation)

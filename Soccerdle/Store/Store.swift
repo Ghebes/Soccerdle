@@ -107,7 +107,6 @@ struct Store: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color("background"))
         .navigationBarBackButtonHidden()
     }
 }

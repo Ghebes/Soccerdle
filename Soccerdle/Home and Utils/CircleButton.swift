@@ -11,13 +11,13 @@ struct CircleButton: View {
     @State var color: Color = Color("wordleBackground")
     @State var image: Image = Image("wordle")
     @State var question: Bool = true
-    @State var title: String = "Unlimited Soccerdle"
+    @State var title: String = "Soccerdle"
     @ObservedObject var navigationValues: NavigationValues
     var body: some View {
         
         Button{
             switch(title){
-            case "Unlimited Soccerdle":
+            case "Soccerdle":
                 navigationValues.showAllLevels = false
                 navigationValues.showHome = false
                 navigationValues.showStore = false

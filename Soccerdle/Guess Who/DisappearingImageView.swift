@@ -37,7 +37,7 @@ struct DisappearingImageView: View{
     
     var body: some View{
         ZStack{
-            Image("gwmessi")
+            Image("gw\(level.lastName.lowercased())")
                 .resizable()
                 .frame(width: 351, height: 437)
                 .cornerRadius(20)
