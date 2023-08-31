@@ -84,7 +84,7 @@ struct SoccerdleView: View {
                                 PlayerSoccerdleView(player: player, answer: answer)
                                     .shadow(radius: 2)
                                     .onAppear{
-                                        if(player == answer){
+                                        if(player == answer && guesses <= 7){
                                             withAnimation(.spring().delay(1.0)){
                                                 won = true
                                                 coinsAmount += coinsWon()
@@ -188,7 +188,8 @@ struct SoccerdleView: View {
     }
     
     func quit() {
-        dismiss()
+        navigationValues.showHome = true
+        navigationValues.showSoccerdle = false
     }
     
     func coinsWon() -> Int {
@@ -207,7 +208,7 @@ struct SoccerdleView: View {
     
     private var lossScreen: some View{
         Group{
-            if(guesses == 7){
+            if(guesses == 7 && !won){
                 ResultsView(won: false, text: "", amountCoins: 0, guesses: guesses, fromWorlde: true, name: answer.name, playAgain: playAgain, quit: quit)
                     .shadow(radius: 3)
             }

@@ -55,7 +55,7 @@ var players: [Player] = [
     Player(firstName: "Thibaut", lastName: "Courtois", generalPosition: .def, specificPosition: .gk, club: .realMadrid, league: .laLiga, nation: .belgium, age: 31, level: 1),
     Player(firstName: "Manuel", lastName: "Neuer", generalPosition: .def, specificPosition: .gk, club: .bayern, league: .bundesliga, nation: .germany, age: 37, level: 1),
     //START PHOTOS FROM HERE
-    Player(firstName: "", lastName: "Neymar", generalPosition: .att, specificPosition: .lw, club: .psg, league: .ligue1, nation: .brazil, age: 31, level: 1),
+    Player(firstName: "", lastName: "Neymar Jr", generalPosition: .att, specificPosition: .lw, club: .psg, league: .ligue1, nation: .brazil, age: 31, level: 1),
     Player(firstName: "Heung Min", lastName: "Son", generalPosition: .att, specificPosition: .lw, club: .tottenham, league: .premier, nation: .korea, age: 30, level: 1),
     Player(firstName: "Sadio", lastName: "Mane", generalPosition: .att, specificPosition: .lw, club: .bayern, league: .bundesliga, nation: .senegal, age: 31, level: 1),
     Player(firstName: "Joshua", lastName: "Kimmich", generalPosition: .mid, specificPosition: .cdm, club: .bayern, league: .bundesliga, nation: .germany, age: 28, level: 1),
