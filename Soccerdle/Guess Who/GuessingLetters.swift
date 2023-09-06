@@ -16,7 +16,7 @@ struct GuessingLetter: View {
             Text(guesses[position].character == " " ? "" : String(guesses[position].character))
                 .font(.custom("PT Sans Caption Bold", size: 24))
         }
-        .frame(width: 34, height: 34)
+        .frame(width: 30, height: 30)
         .background(incorrect ? Color("wrong").opacity(0.6) : guesses[position].character != " " ? Color("questionMark") : .white)
         .overlay{
             RoundedRectangle(cornerRadius: 5)

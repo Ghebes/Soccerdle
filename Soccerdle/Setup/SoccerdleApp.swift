@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct SoccerdleApp: App {
+    
     @AppStorage("coins", store: .standard) var coins: Int = 100
     @AppStorage("level", store: .standard) var currentLevel: Int = 27
     @AppStorage("guessWho", store: .standard) var guessWho: [Bool] = Array(repeating: false, count: LevelInformation().levels.count)
@@ -16,7 +17,6 @@ struct SoccerdleApp: App {
     @StateObject var adCounter = AdCounter()
     
     var body: some Scene {
-        
         
         WindowGroup {
             

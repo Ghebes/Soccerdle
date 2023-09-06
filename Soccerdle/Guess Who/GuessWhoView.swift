@@ -22,10 +22,11 @@ struct RoundedCorner: Shape {
 }
 
 struct GuessWhoView: View {
-    let adCoordinator = AdCoordinator()
-    let adViewControllerRepresentable = AdViewControllerRepresentable()
+    @State var adCoordinator = AdCoordinator()
+    @State var adViewControllerRepresentable = AdViewControllerRepresentable()
     
     @EnvironmentObject var adCounter: AdCounter
+    
     @ObservedObject var navigationValues: NavigationValues
     @Environment(\.dismiss) var dismiss: DismissAction
     @State var level: Level = LevelInformation().levels[0]
@@ -355,7 +356,7 @@ struct GuessWhoView: View {
         if(adCounter.counter >= 2){
             adCounter.counter = 0
             adCoordinator.presentAd(from: adViewControllerRepresentable.viewController)
-            print("presented")
+            adCoordinator.refreshAdCoordinator()
         }
     }
     
@@ -387,14 +388,14 @@ struct GuessWhoView: View {
                     DisappearingImageView(level: $level, hide: $hide, imagesRemoved: $imagesRemoved, won: $won, showAnswer: $showAnswer)
                     
                     //GuessingLetters
-                    HStack(spacing: 10){
+                    HStack(spacing: 4){
                         ForEach(level.letters.indices){ index in
                             GuessingLetter(guesses: $guesses, position: index, incorrect: $incorrect)
                         }
                     }
                     .padding(.top, 10)
                     
-                    HStack(spacing: 10){
+                    HStack(spacing: 4){
                         LazyVGrid(columns: columns){
                             ForEach(allLetters.indices) { index in
                                 NormalLetter(letter: allLetters[index], clicked: $clickedArray[index], guesses: $guesses)
@@ -451,11 +452,11 @@ struct GuessWhoView: View {
                 revealAnswerScreen
                 instructions
                 if(won){
-                    CustomAlert(shown: $won, adCoordinator: adCoordinator, adViewControllerRepresentable: adViewControllerRepresentable, addedCoins: $addedCoins, pressed: $pressed)
+                    CustomAlert(shown: $won, addedCoins: $addedCoins, pressed: $pressed)
                 }
             }else{
                 if(currentLevel - 1 < LevelInformation().levels.count){
-                    GuessWhoView(navigationValues: navigationValues, level: LevelInformation().levels[currentLevel - 1], guesses: Array(repeating: LetterType(character: " "), count: LevelInformation().levels[currentLevel - 1].letters.count), won: false)
+                    GuessWhoView(adCoordinator: adCoordinator, adViewControllerRepresentable: adViewControllerRepresentable, navigationValues: navigationValues, level: LevelInformation().levels[currentLevel - 1], guesses: Array(repeating: LetterType(character: " "), count: LevelInformation().levels[currentLevel - 1].letters.count), won: false)
                 }else{
                     GuessLevelsView(navigationValues: navigationValues)
                 }

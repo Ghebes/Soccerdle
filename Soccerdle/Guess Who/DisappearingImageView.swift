@@ -30,7 +30,7 @@ extension View {
 struct DisappearingImageView: View{
     @Binding var level: Level
     @Binding var hide: [Bool]
-    let timer = Timer.publish(every: 2, on: .main, in: .default).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     @Binding var imagesRemoved: Int
     @Binding var won: Bool
     @Binding var showAnswer: Bool

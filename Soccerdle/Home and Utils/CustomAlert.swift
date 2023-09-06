@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CustomAlert: View {
     @Binding var shown: Bool
-    var adCoordinator : AdCoordinator
-    var adViewControllerRepresentable : AdViewControllerRepresentable
     @State var nextLevel: Level = LevelInformation().levels.first!
     @Binding var addedCoins: Int
     @AppStorage("level") var currentLevel: Int = 1
