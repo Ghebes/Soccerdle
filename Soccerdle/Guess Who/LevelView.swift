@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LevelView: View {
     @AppStorage("level") var currentLevel: Int = 1
-    @AppStorage("coins") var coinsAmount: Int = 1000
+    @AppStorage("coins") var coinsAmount: Int = 100
     @State var level: Level = LevelInformation().levels[0]
     @ObservedObject var navigationValues: NavigationValues
     var body: some View {

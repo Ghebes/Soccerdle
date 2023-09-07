@@ -31,7 +31,7 @@ struct GuessWhoView: View {
     @Environment(\.dismiss) var dismiss: DismissAction
     @State var level: Level = LevelInformation().levels[0]
     @AppStorage("level") var currentLevel: Int = 1
-    @AppStorage("coins") var coinsAmount: Int = 1000
+    @AppStorage("coins") var coinsAmount: Int = 100
     @State var nextLevel: Level = LevelInformation().levels[0]
     @State var pressed: Bool = false
     @State var addedCoins: Int = 0
