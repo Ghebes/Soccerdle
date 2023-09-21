@@ -99,7 +99,7 @@ class LevelInformation: ObservableObject{
         Level(number: 63, playerName: "", lastName:"Bonucci"),
         Level(number: 64, playerName: "", lastName:"DiMaria"),
         Level(number: 65, playerName: "", lastName:"Chiesa"),
-        Level(number: 66, playerName: "", lastName:"Bonou"),
+        Level(number: 66, playerName: "", lastName:"Bounou"),
         Level(number: 67, playerName: "", lastName:"Kounde"),
         Level(number: 68, playerName: "", lastName:"Carvajal"),
         Level(number: 69, playerName: "", lastName:"Savic"),
