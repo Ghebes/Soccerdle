@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "ED1A4211-ED19-46E0-B7D1-24843C06778E"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48B9C531-E33F-4AC4-A112-AE01D3BDB0DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Soccerdle/Guess Who/LevelView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "48B9C531-E33F-4AC4-A112-AE01D3BDB0DA - 16b7438e951b658c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Soccerdle.GuessWhoView in closure #1 () -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, Soccerdle.GuessWhoView&gt; in Soccerdle.LevelView.body.getter : some"
+                  moduleName = "Soccerdle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelghebranious/Desktop/Soccerdle/Soccerdle/Guess%20Who/LevelView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "48B9C531-E33F-4AC4-A112-AE01D3BDB0DA - cc18dad6efee3cd8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; Soccerdle.HomeView in closure #1 () -&gt; SwiftUI.NavigationLink&lt;SwiftUI.Text, Soccerdle.HomeView&gt; in Soccerdle.LevelView.body.getter : some"
+                  moduleName = "Soccerdle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelghebranious/Desktop/Soccerdle/Soccerdle/Guess%20Who/LevelView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "48B9C531-E33F-4AC4-A112-AE01D3BDB0DA - b90c049288e509e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.Button&lt;SwiftUI.Text&gt; in Soccerdle.LevelView.body.getter : some"
+                  moduleName = "Soccerdle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelghebranious/Desktop/Soccerdle/Soccerdle/Guess%20Who/LevelView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

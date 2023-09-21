@@ -1,0 +1,48 @@
+{
+  "identifier" : "A47E9469",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "0F00E3EF",
+      "localizations" : [
+        {
+          "description" : "Purchase 400 Coins",
+          "displayName" : "400 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.coins.cheap",
+      "referenceName" : "Cheap Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "6DCD8A43",
+      "localizations" : [
+        {
+          "description" : "Purchase 1000 Coins",
+          "displayName" : "1000 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.coins.normal",
+      "referenceName" : "Normal Coins",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

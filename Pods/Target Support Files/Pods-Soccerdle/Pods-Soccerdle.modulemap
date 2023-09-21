@@ -1,0 +1,6 @@
+framework module Pods_Soccerdle {
+  umbrella header "Pods-Soccerdle-umbrella.h"
+
+  export *
+  module * { export * }
+}
